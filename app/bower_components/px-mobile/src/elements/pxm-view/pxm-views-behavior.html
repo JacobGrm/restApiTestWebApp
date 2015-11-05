@@ -1,0 +1,272 @@
+<script src="pxm-view-events.js"></script>
+<script src="pxm-view-transitions.js"></script>
+<script type="text/javascript">
+  px.mobile.behaviors = px.mobile.behaviors || {};
+  px.mobile.behaviors.ViewsBehavior = {
+
+
+    created : function() {
+      var logger = new px.mobile.Logger(this.tagName +'-behavior', {colors: {debug: 'color:violet;'}});
+      px.mobile.utils.addMixin(logger, this);
+
+      this.logApi(this.id, 'created');
+      this.ViewMap = {};
+      this.ViewList = [];
+    },
+
+    //Handle when ready
+    ready : function() {
+      this.addClass('et-wrapper');
+      this.logApi(this.id, 'ready');
+    },
+
+    //Handle when attached
+    attached : function() {
+      this.logApi('attached', this.id + ' - ' + this.selected);
+      if (!this.id) {
+        throw 'Views' + this.tagName + ' cannot be created without an id!';
+      }
+
+      this._initViews();
+      this.ViewTransitions = new ViewTransitions();
+      this.ViewTransitions.init(this.selected);
+
+      // TODO: Fire event
+      this.trigger('ready', this);
+    },
+
+    //Initialize the views
+    _initViews: function(){
+      var self = this;
+      this.logApi('_initViews', this);
+      var len = this.children.length;
+
+      for (var i = 0; i < len; i++) {
+        self._addView(this.children[i]);
+      }
+
+    //  this._initRouter();
+      this.currentView = this.children[this.selected];
+      this.gotoIndex(this.selected);
+    },
+
+    //Handle setting up the router
+    _initRouter: function(){
+/*
+      if(this.routerId){
+        this.logApi('_initRouter', this.routerId);
+        this.router = document.getElementById(this.routerId).router;
+        this.router.start();
+      }
+      */
+      var Router = new px.mobile.SimpleRouter('simple', {});
+
+      for(var route in this.routes){
+      //  console.warn('Adding route', route);
+        Router.add(route, function(){
+          alert(arguments);
+        });
+      }
+      Router.listen();
+
+      this.router = Router;
+    },
+
+    //Handle adding a view to the map
+    _addView: function(View){
+      View.attr('index', this.ViewList.length.toString());
+
+      this.ViewList.push(View);
+      View.addClass('et-page');
+      View.addClass('next');
+      this.ViewMap[View.id] = View;
+      this.views[View.id] = View;
+      this.routes[View.route] = View;
+      this.logApi('_addView', View.id);
+    },
+
+    getViewIndex: function(indexOrId){
+      if(this.ViewList[indexOrId]){
+        return this.ViewList[indexOrId];
+      } else if(this.ViewMap[indexOrId]){
+        return this.ViewMap[indexOrId];
+        //return this.ViewList.indexOf(this.ViewMap[indexOrId]);
+      }
+    },
+
+    getCurrentView: function(){
+      return px.mobile.dom('#' + this.id).find('.current');
+    },
+
+
+    appendView: function(obj){
+      var view = new px.mobile.View('view', obj);
+      view.id = 'view-' + this.views.length + 1;
+      this.ViewList.push(view);
+      this.appendChild(view.element);
+      this._addView(view.element);
+    },
+
+
+    //Handle clearing all the 'current' classes.
+    _clearCurrent: function(){
+      this.logApi('_clearCurrent');
+      var _views = Polymer.dom(this).querySelectorAll('pxm-view');
+      if(_views){
+        _views.forEach(function(view){
+          view.removeClass('current');
+        });
+      }
+    },
+    loadView: function(url){
+      console.warn('Load', url);
+      var _this = this, html = '';
+      var view = '';
+
+      this.importHref(url, function (e) {
+        html = e.target.import.body.innerHTML;
+        _this.logApi('inject pxm-view html', _this.id);
+        view = _this.html(html);
+        _this.append(view);
+      }, function (e) {
+        this.logApi('Error loading view', e);
+      });
+    },
+    _setCurrent: function(index, oldIndex){
+      this.logApi('_setCurrent', index);
+
+      var prevView = this.children[oldIndex];
+      var currentView = this.children[index];
+      var nextView = this.children[index + 1];
+
+      this.currentView = currentView;
+
+      if(prevView){
+        this._previousView = oldIndex;
+        prevView.removeClass('next');
+        prevView.addClass('previous');
+        prevView.removeClass('et-page-current');
+      }
+
+      if(nextView){
+        nextView.removeClass('previous');
+        nextView.addClass('next');
+        nextView.removeClass('current');
+
+        nextView.removeClass('et-page-current');
+      }
+
+      if(currentView){
+        this._currentView = index;
+        currentView.addClass('et-page-current');
+        currentView.removeClass('next');
+        currentView.removeClass('previous');
+      }
+
+      if(currentView && currentView.inTrans){
+        this.logApi('Current View transition', currentView.inTrans, currentView.outTrans);
+      }
+      if(prevView && prevView.outTrans){
+        this.logApi('Prev View transition', prevView.inTrans, prevView.outTrans);
+      }
+  /*
+      if(this.ViewTransitions){
+        this.ViewTransitions.animate({
+          current: currentView,
+          next: nextView,
+          callback: function(curr, next){
+            alert('Done');
+            next.addClass('et-page-current');
+          }
+        });
+      }
+      */
+    },
+    resetViews :function(){
+        this.ViewList.forEach(function(view){
+          view.addClass('next');
+          view.removeClass('previous');
+        });
+        this.ViewList[this.selected].addClass('et-page-current');
+        this.selected = 0;
+        this.current();
+      },
+      updateHash:function(){
+        window.location.hash = '#'+ this.currentView.route;
+      },
+      _setPrevNextClasses: function(){
+
+        var current = this.selected;
+        var prev = this.selected - 1;
+        var next = this.selected + 1;
+        var len = this.children.length;
+        for (var i = 0; i < len; i++) {
+          if(i === prev){
+            this.children[i].addClass('previous');
+          } else {
+            this.children[i].addClass('next');
+          }
+        }
+      },
+      gotoView: function(id){
+        var index = 0;
+        if(this.ViewMap[id]){
+          index = this.ViewList.indexOf(this.ViewMap[id]);
+        }
+        this.selected = index;
+        this.logApi('gotoview', id);
+      },
+      goto: function(indexOrId){
+        this.logApi('goto', indexOrId);
+        if(this.ViewMap[indexOrId]){
+          this.gotoView(indexOrId);
+          return this.ViewMap[indexOrId];
+        } else if(this.ViewList[indexOrId]){
+          this.gotoIndex(indexOrId);
+          return this.ViewList[indexOrId];
+        } else {
+          throw new Error('px.mobile.behaviors.ViewsBehavior.goto - could not find view ' + indexOrId);
+        }
+      },
+      gotoIndex: function(index){
+        this.logApi('gotoIndex', index);
+        this.selected = index;
+      },
+      current: function(){
+        this.gotoIndex(this.selected);
+        this.logApi('current', this.selected);
+      },
+      next: function(){
+        if(this.selected >= this.ViewList.length -1){
+
+          if(this.loop){
+              this.resetViews();
+          } else {
+            this.current();
+          }
+
+        } else {
+          this.gotoIndex(this.selected + 1);
+        }
+      },
+      prev: function(){
+        if(this.selected <= 0){
+          this.current();
+        } else {
+          this.gotoIndex(this.selected -1);
+        }
+      },
+      removeTransition: function(index) {
+        var view = this.ViewList[index];
+        view.content.css('transition', 'none');
+      },
+      doTransition: function(index) {
+        var view = this.ViewList[index];
+        var position = view.position();
+         view
+          .css('transition', 'all 400ms ease')
+          .css('transform', 'translate3d(' + (-1 * (position.left)) + 'px, 0, 0)');
+      }
+  };
+
+</script>

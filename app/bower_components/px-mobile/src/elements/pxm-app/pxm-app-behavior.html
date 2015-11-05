@@ -1,0 +1,225 @@
+<script type="text/javascript">
+  px.mobile.behaviors = px.mobile.behaviors || {};
+  px.mobile.behaviors.app = {
+    properties: {
+      //The application current title
+      title: {
+        type: String,
+        value: 'My App'
+      },
+
+      //The application configuration settings
+      config:{
+        type: Object,
+        value: {}
+      },
+
+      //The application session
+      session:{
+        type: Object,
+        value: {}
+      },
+
+      //The application db
+      db:{
+        type: Object,
+        value: {}
+      },
+
+      //The application routes
+      routes:{
+        type: Object,
+        value: {}
+      },
+
+      //The application modules
+      modules:{
+        type: Object,
+        value: {}
+      },
+
+      //The application history
+      history:{
+        type: Object,
+        value: {}
+      },
+
+      //The application views
+      views:{
+        type: Object,
+        value: {}
+      },
+
+      //The application pages
+      pages:{
+        type: Object,
+        value: {}
+      },
+
+      //The application collections
+      collections:{
+        type: Object,
+        value: {}
+      },
+
+      //The application models
+      models:{
+        type: Object,
+        value: {}
+      },
+
+      //The application templates
+      templates:{
+        type: Object,
+        value: {}
+      },
+
+      //The application main view
+      mainView:{
+        type: Object,
+        value: {}
+      },
+
+      //The application current view
+      currentView:{
+        type: Object,
+        value: {}
+      }
+    },
+    created: function(){
+      var logger = new px.mobile.Logger(this.tagName + '#' + this.id, {colors: {debug: 'color:red'}});
+      px.mobile.utils.addMixin(logger, this);
+      this.logApi(this.id, 'created');
+
+    },
+    ready: function(){
+        this.logApi(this.id, 'ready');
+        this._initViews();
+    },
+
+    attached: function(){
+      var _this = this;
+      this.logApi(this.id, 'attached');
+
+      //TODO - Get db
+      _this.db = Polymer.dom(this).querySelector('px-db');
+
+      // TODO: Get px-views (mainView)
+      _this.mainView = Polymer.dom(this).querySelector('px-views');
+
+      //TODO - Get router
+      _this.router = Polymer.dom(this).querySelector('px-router');
+
+
+
+      // TODO: Get pages
+      var _pages = Polymer.dom(this).querySelectorAll('px-page');
+      if(_pages){
+        _pages.forEach(function(page){
+          _this.pages[page.id] = page;
+          _this.logApi('indexing page', page.id);
+        });
+      }
+
+      this.CollectionsList = Polymer.dom(this).querySelectorAll('px-collection');
+      this.ViewList  = Polymer.dom(this).querySelectorAll('px-view');
+      this.ViewsList  = Polymer.dom(this).querySelectorAll('px-views');
+      this.PagesList  = Polymer.dom(this).querySelectorAll('px-page');
+
+      // TODO: Get models
+      var _models = Polymer.dom(this).querySelectorAll('px-model');
+      if(_models){
+        _models.forEach(function(model){
+          _this.models[model.id] = model;
+        });
+      }
+
+      // TODO: Get collections
+      var _collections = Polymer.dom(this).querySelectorAll('px-collection');
+      if(_collections){
+        _collections.forEach(function(col){
+          _this.collections[col.id] = col;
+        });
+      }
+
+      // TODO: Get all items
+    //  this._getAndSet();
+
+      // TODO: Fire event
+      this.fire('px-app-ready', this);
+    },
+
+    // TODO: Get all and set
+    _getAndSet:function(key, value){
+      var _this = this;
+      var _items = Polymer.dom(this).querySelectorAll(key);
+      if(_items && _items.length){
+        _items.forEach(function(item){
+          _this.logApi('_getAndSet', key);
+          //_this[key] = value;
+        });
+      }
+    },
+    detached: function(){
+      console.warn('px-app detached!', this);
+    },
+
+    _initViews: function(){
+      var _this = this;
+      var views = Polymer.dom(this).querySelectorAll('px-view');
+      // TODO: Make first view current / hide nav and article
+      views.forEach(function(view){
+        _this.addView(view);
+
+        _this.logApi('_initViews', view);
+        //px.mobile.dom('#'+view.id).find('article').addClass('next');
+        //px.mobile.dom('#'+view.id).find('nav').addClass('next');
+      });
+    },
+
+    //I handle changing the current view.
+    changeView: function(view, options){
+      //current view
+      this.getCurrentView().active = false;
+      px.mobile.dom('#' + this.getCurrentView().id).find('article').addClass('previous');
+      px.mobile.dom('#' + this.getCurrentView().id).find('nav').addClass('previous');
+
+      //Next view
+      document.getElementById(view).active = true;
+      px.mobile.dom('#'+view).find('article').addClass('current');
+      px.mobile.dom('#'+view).find('nav').addClass('current');
+    },
+
+    //I handle adding a view to the views.
+    addView: function(view){
+      if(!view.id){
+        throw new Error('Must provide an ID for the view!');
+      }
+      this.views[view.id] = view;
+    },
+
+    //I handle returning the current view.
+    getCurrentView: function(){
+      for(var view in this.views){
+
+        if(document.getElementById(view).active){
+          return document.getElementById(view);
+        }
+      }
+    },
+
+    //I handle loading a view by url.
+    loadView: function(url){
+
+    },
+    changeView: function(name){
+      console.warn('change view to ', name);
+    },
+    logout: function(){
+      window.location.reload();
+    }
+  };
+
+
+
+</script>

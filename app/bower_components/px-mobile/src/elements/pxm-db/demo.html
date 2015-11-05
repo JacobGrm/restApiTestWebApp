@@ -1,0 +1,101 @@
+<html>
+<head>
+  <title>px-db demo</title>
+
+  <!-- TODO: Dependencies -->
+  <script src="../webcomponentsjs/webcomponents-lite.min.js"></script>
+  <link rel="import" href="../polymer/polymer.html">
+
+
+
+  <!-- TODO: Testing -->
+  <link rel="stylesheet" href="../jasmine/lib/jasmine-core/jasmine.css"/>
+  <script src="../jasmine/lib/jasmine-core/json2.js"></script>
+  <script src="../jasmine/lib/jasmine-core/jasmine.js"></script>
+  <script src="../jasmine/lib/jasmine-core/jasmine-html.js"></script>
+  <script src="../jasmine/lib/jasmine-core/boot.js"></script>
+
+  <!-- TODO: Specs -->
+  <link rel="import" href="px-db.html">
+  <script src="test/px-db-spec.js" ></script>
+
+  <!-- TODO: Docs -->
+  <link rel="stylesheet" href="/styles/Github2.css"/>
+  <link rel="import" href="../px-mobile/px-mobile.html">
+
+
+</head>
+<body>
+
+<!-- TODO: px-view docs -->
+<div id="readme"></div>
+<script src="../showdown/dist/showdown.min.js"></script>
+<script type="text/javascript">
+  var converter = new showdown.Converter(),text,html;
+  var http = new px.mobile.HTTP('./');
+  http.get('README.md').then(function(resp){
+    resp.text().then(function (text) {
+      html = converter.makeHtml(text);
+      document.getElementById('readme').innerHTML = html;
+    });
+  });
+</script>
+
+
+<!-- TODO: Demo -->
+<px-db id="db"
+     base-url="/default"
+     params='{
+     "startkey":"resource-a",
+     "endkey": "resource-z",
+     "limit": 10,
+     "include_docs": true
+     }'
+     last-response="{{data}}"></px-db>
+
+
+
+
+
+
+
+<!-- TODO: Example usage -->
+<dom-module id="db-list">
+  <template>
+    <px-db id="database"
+       base-url="/default"
+       params='{
+       "startkey":"resource-a",
+       "endkey": "resource-z",
+       "limit": 10,
+       "include_docs": true
+       }'
+       last-response="{{data}}"></px-db>
+    <ol>
+      <template is="dom-repeat" items="{{data.rows}}">
+        <li><span>{{item.id}}</span></li>
+      </template>
+    </ol>
+  </template>
+  <script>
+    HTMLImports.whenReady(function(){
+      Polymer({
+        is: 'db-list'
+      });
+    });
+  </script>
+</dom-module>
+
+<!-- NOTE: Usage in application -->
+<db-list id="sample-db"></db-list>
+
+
+
+
+
+<hr>
+<h1>Unit Tests</h1>
+
+<div id="HTMLReporter" class="jasmine_reporter"></div>
+</body>
+</html>

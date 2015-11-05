@@ -1,0 +1,243 @@
+<html class="pxm">
+<head>
+  <title>pg-app demo</title>
+
+    <!-- Sets initial viewport load and disables zooming  -->
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+
+    <!-- Makes your prototype chrome-less once bookmarked to your phone's home screen -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <!-- TODO: dependencies -->
+  <script src="../../../../webcomponentsjs/webcomponents-lite.js"></script>
+
+  <link rel="import" href="../../../../polymer/polymer.html">
+
+
+	<!-- TODO: pxm components -->
+  <link rel="import" href="../../../px-mobile.html">
+  <link rel="import" href="../../../px-mobile-theme.html">
+
+  <style media="screen">
+    .card header{
+      text-transform: uppercase;
+    }
+    body.login pxm-navbar{
+
+    }
+  </style>
+</head>
+<body class="login">
+
+<pxm-app id="myApp" name="My App">
+
+  <!-- TODO: Database-->
+	<pxm-db id="myDb"
+				 name="database"
+				 base-url="/predixgo">
+
+		<!-- TODO: Collections -->
+    <pxm-collection id="issueCollection" params='{"startkey":"resource-a","endkey":"resource-z"}'></px-collection>
+
+		<!-- TODO: Models -->
+    <pxm-model id="issueModel"></px-model>
+	</pxm-db>
+
+  <pxm-navbar id="appNavbar" title="App" class="" view-container="appViews">
+    <div class="left">
+      <button type="button" class="small outline" onclick="appNavbar.toggleMenu()">
+        <i class="fa fa-lg fa-bars"></i>
+      </button>
+    </div>
+    <h4>Predix Mobility Seed</h4>
+    <div class="right">
+			<button type="button" class="small outline">
+				<i class="fa fa-lg fa-gear"></i>
+			</button>
+    </div>
+  </pxm-navbar>
+
+
+
+  <pxm-views id="appViews" class="background-color-al">
+
+
+<pxm-view id="loginView" class="">
+  <div class="margin-20">
+    <div class="container gutters">
+    <div class="col-sm-3 hidden-sm push-4"></div>
+    <div class="col-sm-6">
+    <div class="box padding-20">
+    <div class="logo padding-10 text-center"><img src="../../images/ge-monogram.svg" height="100px">
+    <h2 class="no-margin">My App</h2>
+    <p>Powered by Predix Mobility</p>
+    </div>
+    <form >
+    <input type="text" placeholder="SSO" required="">
+    <input type="password" placeholder="Password" required="">
+      <button class="block primary" type="button" onclick="appViews.next();">Sign in</button>
+    </form>
+    <hr>
+    <div class="clearfix"><a href="#" class="pull-left color-alt">Create account</a><a href="#" class="pull-right color-alt">Reset password</a></div>
+    </div>
+    </div>
+    </div>
+  </div>
+</pxm-view>
+
+    <pxm-view id="aboutView" route="/">
+      <div class="container full-width gutters">
+        <div class="col-12">
+          <h3>Mobile Seed</h3>
+          <p>
+            Use the Dashboard Seed to develop your own industrial monitoring application. The Dashboard Seed is both a tutorial and a template that gets you up and running quickly. It provides you with capabilities such as a contextual browser, data source control, UI elements integration, internationalization, and Cloud Foundry deployment support. Just click the link below to clone this project and begin coding... it's that simple!
+          </p>
+          <p>
+            Before you begin building an application please read the Getting Started Github repo.
+          </p>
+          <h4>How Do I Build an Application Using the Dashboard Seed?</h4>
+          <p>
+            Once you clone the Dashboard Seed, use it as a starter project, where you can add the features and functionality that you want, and delete what you do not need.
+          </p>
+
+          <h4>Glossary</h4>
+          <dl class="inline">
+            <dt>Asset:</dt><dd>Any thing that has value of which your organization wants to track its condition, performance or health.</dd>
+            <dt>Card:</dt><dd>An editable container that is composed by the application developer and resides within a larger container called a View.</dd>
+            <dt>Components/Widgets :</dt><dd>Self contained portion of an application that is composed to serve a particular function.</dd>
+            <dt>Context Browser:</dt><dd> Component providing an application the basis of what asset is to be analyzed or audited.</dd>
+            <dt>Dashboard:</dt><dd>A data visualization tool that displays condition, performance and health metrics ( sometimes KPIs ) within a single view.</dd>
+            <dt>Data Source:</dt><dd>The connectible location of information pertaining to the real world state of a facility or individual asset.</dd>
+            <dt>Deck:</dt><dd>A series of Cards that are organized by the developer that may or may not have interactivity between them.</dd>
+            <dt>Module:</dt><dd> Individual repository for Sass files and related UI Elements.</dd>
+            <dt>UI Elements:</dt><dd>The individual pieces of a consistent visual language to represent items such as buttons, form fields, drop-downs and so on. </dd>
+            <dt>Navbar:</dt><dd>Component which contains the global navigation located on the left of all screens.</dd>
+          </dl>
+
+          <p>
+            See more about UI Elements in the Predix Design System. See more about the Design System.
+          </p>
+
+
+        </div>
+      </div>
+
+    </pxm-view>
+
+
+    <pxm-view id="dashboardView" route="/dashboard">
+      <div class="grid">
+        <div class="padding-5">
+
+        </div>
+        <div class="padding-5">
+          <pxm-card id="card-2" title="deck-1 - card 2">
+            deck-1 - card 2
+          </pxm-card>
+        </div>
+      </div>
+    </pxm-view>
+
+
+    <pxm-view id="cardsView" route="/cards">
+
+      <div class="container full-width gutters">
+        <div class="col-12">
+          <pxm-card id="card-1" title="What is a Card?">
+            <p class="padding-10">
+              A Card is an editable container that resides within the content area of your screen.
+              For example, there are three sections on this page--each section is a card.
+            </p>
+          </pxm-card>
+          <pxm-card id="card-2" title="What is a Deck?">
+            <p class="padding-10">
+              A Deck is an ordered series of cards set by you, the developer.
+            </p>
+          </pxm-card>
+          <pxm-card id="card-2" title="Making Decks and Cards">
+            <p>
+              Here are examples of the markup used to construct cards and decks.
+            </p>
+            <pxm-example>
+              <div class="card">
+                <header>
+                  Card Header
+                </header>
+                <section>
+                  Card Content
+                </section>
+                <footer>
+                  Card Footer
+                </footer>
+              </div>
+            </pxm-example>
+          </pxm-card>
+        </div>
+      </div>
+
+
+
+    </pxm-view>
+
+
+    <pxm-view id="componentsView" route="/components">
+       <div class="container full-width gutters">
+         <pxm-card title="What is a Component?">
+           <p>
+             A component is a part of an application that is built to serve a specific function. It is a self-contained feature that uses UI Elements from the Predix design system.
+           </p>
+           <p>
+             UI Elements are individual pieces of a consistent visual language used to represent items such as buttons, form fields, drop-downs, and other coded patterns.
+           </p>
+           <p>
+             In the Dashboard Seed, the changes you make in one component can affect the data displayed in another component. For example, changing the date range in one time series component changes the date range in another.
+           </p>
+         </pxm-card>
+       </div>
+    </pxm-view>
+  </pxm-views>
+</pxm-app>
+
+
+
+<script type="text/javascript">
+  HTMLImports.whenReady(function(){
+    var appMenu = [
+      {
+        id: 'about',
+        title: 'About',
+        icon: 'fa fa-g fa-home',
+        href: '#/',
+        view: 'aboutView'
+      },{
+        id: 'dashboard',
+        title: 'Dashboard',
+        icon: 'fa fa-g fa-dashboard',
+        href: '#/dashboard',
+        view: 'dashboardView'
+      },
+      {
+        id: 'cards',
+        title: 'Cards',
+        icon: 'fa fa-g fa-th',
+        href: '#/cards',
+        view: 'cardsView'
+      },
+      {
+        id: 'components',
+        title: 'Components',
+        icon: 'fa fa-g fa-bar-chart',
+        href: '#/components',
+        view: 'componentsView'
+      }
+    ];
+
+    appNavbar.menu = appMenu;
+
+
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+pxm-app#myApp(name='My App')
+  script(src='bower_components/px-mobile/src/js/shims/android_shim_lite.js')
+
+  // TODO: Database
+  pxm-db#myDb(name='database', base-url='/predixgo')
+    // TODO: Collections
+    pxm-collection#issueCollection(params='{"startkey":"resource-a","endkey":"resource-z"}')
+      // TODO: Models
+      pxm-model#issueModel
+
+  // TODO: App navbar
+  pxm-navbar#appNavbar(view-container='appViews')
+    .left
+      button.small.outline(type='button', onclick='appNavbar.toggleMenu()')
+        i.fa.fa-lg.fa-bars
+    h4 PredixGo Test App
+
+    div(id='result')
+    script(src='spec/index.js')
+    input(type='button', id='clickButt', onclick='runJasmineTests()' value='Run REST API Tests')

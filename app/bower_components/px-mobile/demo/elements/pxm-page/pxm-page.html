@@ -1,0 +1,219 @@
+<!-- TODO: px components
+<link rel="import" href="../pg-card/pg-card.html"/>
+
+<link rel="import" href="../px-card/px-deck.html"/>
+<link rel="import" href="../px-card/px-card.html"/>
+-->
+
+<link rel="import" href="pxm-page-behavior.html"/>
+
+<!--
+
+This provides a wrapper for px-deck and px-card elements.
+
+
+## Usage
+To use this component in your custom component do the following:
+
+```
+<dom-module id="demo-view">
+  <template>
+    <pxm-page id="demo-card-view">
+      <px-card header-text="Sample Card">
+        Card content
+      <px-card>
+    </pxm-page>
+  </template>
+</dom-module>
+<script>
+  Polymer({
+  is: 'demo-view',
+    init: function(){
+      // this is where you can do some initialization of your card
+    },
+    behaviors: [px.view]
+  });
+</script>
+```
+@element pxm-page
+@blurb Element containing basic styling and behaviors (API) for card
+@demo demo.html
+@homepage index.html
+-->
+<dom-module id="pxm-page">
+  <style>
+  :host {
+    display: block;
+    box-sizing: border-box;
+    -webkit-transition: all 0.4s ease-out;
+    transition: all 0.4s ease-out;
+  }
+
+  :host.dialog{
+    position: fixed;
+    left: 0;
+    right: 0;
+    transform: translate(0,0);
+  }
+
+  :host.dialog:not(.open){
+    transform: translate(0,100%);
+  }
+
+  </style>
+  <template>
+    <section class="page-content overthrow">
+      <content></content>
+    </section>
+  </template>
+</dom-module>
+<script type="text/javascript">
+  Polymer({
+    is : 'pxm-page',
+    properties : {
+      //Title of the page
+      title : {
+        type : String,
+        value: null
+      },
+
+      //Text for the back button
+      backText:{
+        type: String,
+        value: null
+      },
+
+      //Enable back button
+      backLink:{
+        type: String,
+        value: null
+      },
+
+      //Path to remote view that will be loaded
+      href:{
+        type: String,
+        notify: true,
+        value: null,
+        observer: '_tmplChanged'
+      },
+
+      //If the page is the current page.
+      active : {
+        type : Boolean,
+        value : false,
+      },
+
+      //If the page is a dialog
+      dialog : {
+        type : Boolean,
+        value : false,
+      },
+
+      //with URL query parameters. If your page URL is "about.html?id=10&count=20&color=blue"
+      query : {
+        type : Object
+      },
+
+      //The context that was passed for this page when using pxm-pages
+      context : {
+        type : Object
+      },
+
+      //View instance that contains this page (if this View was initialized)
+      view : {
+        type : Object
+      },
+
+      //Page Data object of the previously active page
+      fromPage : {
+        type : Object
+      },
+
+      route: {
+        type: String
+      },
+
+      //Contains string URL of just loaded page
+      url: {
+        type: String
+      },
+
+      //Link to Page HTMLElement
+      container: {
+        type: String
+      }
+    },
+
+    created : function() {
+      var logger = new px.mobile.Logger(this.tagName, {colors: {debug: 'color:orange'}});
+      px.mobile.utils.addMixin(logger, this);
+      this.logApi('created', this.id);
+      px.mobile.PubSub.emit('page:'+this.id+':init', this);
+    },
+    ready : function() {
+      this.logApi('ready', this.id);
+      if(this.dialog){
+        this.toggleClass('dialog');
+      }
+      px.mobile.PubSub.emit('page:'+this.id+':ready', this);
+    },
+    show: function(){
+			this.logApi('show view', this.id);
+      this.toggleClass('current', false, this);
+    },
+    hide: function(){
+			this.logApi('hide view', this.id);
+      this.toggleClass('hidden', true, this);
+    },
+    update: function(){
+			this.logApi('update view', this.id);
+    },
+    currentView: function(){
+			this.logApi('current view', this.id);
+      this.child()[0].toggleClass('current', true, this);
+    },
+    nextView: function(){
+			this.logApi('next view', this.id);
+      this.toggleClass('next', true, this);
+    },
+    previousView: function(){
+			this.logApi('previous view', this.id);
+      this.toggleClass('previous', true, this);
+    },
+    contextChanged : function(newContext, oldContext) {
+			this.logApi('contextChanged', newContext, oldContext);
+    },
+
+    //I handle loading a page from a url
+    _tmplChanged: function(newVal, oldVal){
+      var _this = this, html = '';
+      if(newVal){
+				this.logApi(this.id, 'Load remote html', newVal);
+
+        this.importHref(newVal, function(e) {
+        	html = e.target.import.body.innerHTML;
+        	_this.logApi('inject html', _this.id);
+					_this.logApi('inject px-view html', _this.id);
+          _this.html(html);
+        }, function(e) {
+            // loading error
+					_this.logApi('Error loading page', e);
+        });
+      }
+    },
+    showMenu:function(){
+      px.mobile.dom('px-app').toggleClass('show-menu');
+    },
+    open: function(){
+      if(this.dialog){
+        this.toggleClass('open');
+      }
+    },
+    close: function(){
+      if(this.dialog){
+        this.toggleClass('open');
+      }
+    }
+  });
+
+</script>

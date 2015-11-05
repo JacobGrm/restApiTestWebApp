@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <!-- TODO: Dependencies -->
+    <script src="../../bower_components/webcomponentsjs/webcomponents.min.js"></script>
+    <script src="../../bower_components/web-component-tester/browser.js"></script>
+    <link rel="import" href="../../bower_components/polymer/polymer.html">
+
+    <!-- TODO: add px-mobile -->
+    <script src="../../dist/px-mobile.js"></script>
+    <link rel="import" href="../../px-mobile.html">
+    <title>web-component-tester</title>
+    <style media="screen">
+      section{
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+
+    <section>
+      <h1>Web Component Tester</h1>
+      <p>
+        Add your components to this file to run tests.
+      </p>
+    </section>
+    <script>
+
+    // TODO: Load files from node.js server glob
+    var specs = [
+      './px-app-test.html',
+      './px-collection-test.html',
+      './px-db-test.html',
+      './px-list-test.html',
+      './px-model-test.html',
+      './px-navbar-test.html',
+      './px-notifications-test.html',
+      './px-page-test.html',
+      './px-view-test.html',
+    ];
+    WCT.loadSuites(specs);
+
+
+    </script>
+  </body>
+</html>

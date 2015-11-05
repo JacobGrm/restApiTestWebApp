@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <script src="../../bower_components/webcomponentsjs/webcomponents.min.js"></script>
+  <script src="../../bower_components/web-component-tester/browser.js"></script>
+  <link rel="import" href="../../bower_components/polymer/polymer.html">
+
+  <link rel="import" href="../../px-mobile.html">
+</head>
+<body>
+  <px-pages id="fixture">
+    <px-page id="page1"></px-page>
+    <px-page id="page1"></px-page>
+    <px-page id="page1"></px-page>
+  </px-pages>
+
+  <script>
+    suite('<px-pages>', function() {
+      var element = document.getElementById('fixture');
+      test('has pages property', function() {
+        assert.ok(element.PageMap);
+      });
+      test('has next()', function() {
+        assert.ok(element.next);
+      });
+      test('has prev()', function() {
+        assert.ok(element.prev);
+      });
+      test('next() - changes to next page', function() {
+        element.next();
+        assert.equal(element.selected, 1);
+      });
+      test('prev() - changes to previous page', function() {
+        element.prev();
+        assert.equal(element.selected, 0);
+      });
+    });
+  </script>
+</body>
+</html>

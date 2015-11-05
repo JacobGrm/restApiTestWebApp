@@ -1,0 +1,62 @@
+mixin input(type, text)
+  dt.col-sm-2
+    label=text
+  dd.col-sm-10
+    input(type=type, placeholder=text)
+
+.page-header
+  h2 Forms
+  
+h3 Basic Form
+pxm-example
+  form
+    input(type="text", placeholder="Full name")
+    input(type="email", placeholder="Email")
+    input.success(type="text", placeholder="Success")
+    input.error(type="email", placeholder="Error")
+    input.warning(type="password", placeholder="Warning")
+    textarea(rows="5")
+    button.button.block Reset
+    button.button.block.primary Submit
+
+h3 Responsive Forms
+pxm-example
+  form
+    dl.container
+      +input('email', 'Email')
+      +input('password', 'Password')        
+      +input('tel', 'Telephone')
+      +input('date', 'Date')
+      +input('datetime', 'Date Time')
+      +input('datetime-local', 'Date Time Local')
+      +input('month', 'Month')
+      +input('week', 'Week')
+      +input('time', 'Time')
+      +input('url', 'URL')
+      +input('color', 'Color')
+      +input('file', 'File')
+      +input.switch('checkbox', 'Checkbox')
+      +input.switch('radio', 'Radio')
+      +input('number', 'Number')
+      
+      dt.col-sm-2
+        label Select
+      dd.col-sm-10
+        select
+          option Option 1
+          option Option 2
+          option Option 3
+          option Option 4
+          option Option 5
+      
+      dt.col-sm-2
+        label Select Multi
+      dd.col-sm-10
+        select(multiple)
+          option Option 1
+          option Option 2
+          option Option 3
+          option Option 4
+          option Option 5
+    button.button.block.primary Submit
+ 

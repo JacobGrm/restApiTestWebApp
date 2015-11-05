@@ -1,0 +1,48 @@
+class XElement extends HTMLElement {
+		constructor() {
+				super()
+		}
+
+		value() {
+						let tmpl = document.querySelector('#x-element-template');
+						let clone = document.importNode(tmpl.content, true);
+						this.createShadowRoot().appendChild(clone);
+				}
+				// Fires when an instance of the element is created.
+		createdCallback() {
+						console.log('created', this.attributes, this.id)
+						this.value()
+				}
+				// Fires when an instance was inserted into the document.
+		attachedCallback() {
+						console.log('attached', this);
+				}
+				// Fires when an instance was removed from the document.
+		detachedCallback() {
+						console.log('detached', this);
+				}
+				// Fires when an attribute was added, removed, or updated.
+		attributeChangedCallback(attr, oldVal, newVal) {
+				console.log(attr, 'changed', 'from', oldVal, 'to', newVal, this);
+		}
+
+		get html() {
+				return this.body
+		}
+		set html(val) {
+				this.body = val
+		}
+}
+
+function supportsCustomElements() {
+		return 'registerElement' in document;
+}
+
+if (supportsCustomElements()) {
+		// Good to go!
+		document.registerElement('x-element', XElement);
+		console.info('Custom elements are supported!');
+} else {
+		// Use other libraries to create components.
+		console.warn('Create custom element with Polyfills');
+}

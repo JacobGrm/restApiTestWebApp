@@ -1,0 +1,116 @@
+
+<!--
+# Overview
+This web component element `px-model` provides access to a data model declared in markup.
+This model communicates with a server via RESTful calls, it is pluggable and ready to be
+used in any web component based application.
+
+## Usage
+To use this component in your custom component do the following:
+
+```
+<dom-module id="example-module">
+  <template>
+    <px-model id="model1"
+      auto
+      key="data-card-my-predix-card"
+      last-response="{{data}}">
+    </px-model>
+    <div>{{data._id}}</div>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'example-module'
+    });
+  </script>
+</dom-module>
+```
+@element px-model
+@demo demo.html
+@homepage index.html
+-->
+<dom-module id="pxm-model">
+  <template>
+    <content></content>
+  </template>
+</dom-module>
+<script type="text/javascript">
+  Polymer({
+    is: 'pxm-model',
+    properties: {
+      //The URL target of the data source.
+      baseUrl: {
+        type: String,
+        value: '/default'
+      },
+      //If true, automatically performs an Ajax request when either url or params changes.
+      auto: {
+        type: Boolean,
+        value: false
+      },
+      //Length of time in milliseconds to debounce multiple requests.
+      debounceDuration: {
+        type: Number,
+        value: 0
+      },
+      //The key of the model object.
+      key: {
+        type: String,
+        notify: true,
+        observer: 'keyChanged'
+      },
+      //The last response data object that will be populated.
+      data: {
+        type: Object,
+        notify: true,
+        value: {}
+      },
+      model: {
+        type: Object,
+        notify: true,
+        value: {}
+      }
+    },
+    created: function () {
+      px.mobile.utils.addMixin(new px.mobile.Logger('px-model'), this);
+      console.log(this);
+      this.info('created!');
+    },
+    ready: function () {
+      this.info('ready!');
+    },
+    attached: function () {
+      if (!this.id) {
+        throw 'Model ' + this.tagName + ' cannot be created without an id!';
+      }
+      this.model = new px.mobile.Model(this.key, {
+        baseUrl: this.baseUrl
+      });
+      this.info('attached!');
+    },
+    fetch: function (params) {
+      var self = this;
+      if(!this.model.id){
+        this.model = new px.mobile.Model(this.key, {
+          baseUrl: this.baseUrl
+        });
+      }
+      self.debounce('fetch', function () {
+        self.model.fetch().then(function (resp) {
+          self.data = resp.data;
+        });
+      }, self.debounceDuration);
+    },
+
+    keyChanged: function(newKey, oldKey){
+      console.warn('keyChanged', newKey);
+      if(newKey){
+        if(this.auto){
+          this.fetch();
+        }
+      }
+    }
+  });
+
+</script>

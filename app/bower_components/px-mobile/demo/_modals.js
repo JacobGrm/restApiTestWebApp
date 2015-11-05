@@ -1,0 +1,7 @@
+function template(locals) {
+var buf = [];
+var jade_mixins = {};
+var jade_interp;
+
+buf.push("<div class=\"page-header\"><h2>Modals</h2></div><a onclick=\"myModalexample.toggle()\" class=\"btn\">Toggle modal</a><pxm-modal id=\"myModalexample\" title=\"Modal\"></pxm-modal><div class=\"page-header\"><h2>Popovers</h2><p>Popovers are designed to only fire from title bars. Set the value of the title href to the id of a popover, like so:</p></div>");;return buf.join("");
+}

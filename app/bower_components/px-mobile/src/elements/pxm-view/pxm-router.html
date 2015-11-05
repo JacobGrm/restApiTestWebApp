@@ -1,0 +1,100 @@
+<!-- TODO:
+
+
+
+
+
+
+Each of these methods accepts options object with the following properties:
+
+Parameter	Type	Description
+
+* url	string	URL of the page to load
+* content	string or HTMLElement or [jQuery/Zepto/DOM7 collection] or [array of HTMLElement]	Content of the Dynamic page to load
+* pageName	string	Page name (data-page) of page to load. Only for Inline Pages (DOM Cache)
+* template	function (Template7 compiled template)	Template to be rendered and loaded as Dynamic page
+* context	object or array	Template7 context to be applied for page rendering. Learn more about it in Template7 Pages section
+* contextName	string	Optional. Context name/path in templatesData to be applied for page rendering with Template7. Learn more about it in Template7 Pages section
+* query	object	Object with additionall query parameters that could be retreived in query object of Page Data
+* force	boolean	Optional. Only for back method. If set to true then it will ignore previos page in history and load specified one
+* ignoreCache	boolean	Optional. If set to true then it will ignore if such URL in cache and reload it using XHR again
+* animatePages	boolean	Optional. Allows to override the same View's parameter to enable/disable transition between pages for this case
+* reload	boolean	Optional. If set to true then it will not load page as new page, and just replace currently active View's page with specified one. It will also modify View's history by replacing last history item
+* reloadPrevious	boolean	Optional. Used in addition to reload. Will do the same as reload but for previous page.
+* pushState	boolean	Optional. Tell View to store loaded in page in browser's history state or not
+
+
+
+
+
+
+
+ -->
+ <script type="text/javascript">
+   var pxRouterBehavior = {
+     properties: {
+
+     },
+     refreshPage: function(){},
+     //load required page to view. In other word will do the same if you click on some link with this URL
+     loadPage: function(url){},
+     //load dynamically generated content as a new usual page.
+     loadContent: function(content){},
+     //reload required page to the currently active view's page. It will also modify View's history and replace last item in history with the specified url
+     reloadPage: function(url){},
+     //reload required content to the currently active view's page. It will also modify View's history and replace last item in history with the specified content
+     reloadContent: function(content){},
+     //reload required page to the previous view's page. It will also modify View's history and replace related item in history with the specified url
+     reloadPreviousPage: function(url){},
+     //reload required content to the previous view's page. It will also modify View's history and replace related item in history with the specified content
+     reloadPreviousContent: function(content){}
+
+   };
+ </script>
+<dom-module id="px-router">
+  <style>
+    :host {
+      display: block;
+    }
+  </style>
+  <template>
+  </template>
+  <script>
+  Polymer({
+    is: 'px-router',
+    properties:{
+      routes: {
+        type: Object,
+        value:{}
+      },
+      router: {
+        type: Object,
+        value:{}
+      }
+    },
+    behaviors:[ pxRouterBehavior ],
+    created: function(){
+      console.warn(this.tagName, 'created', this);
+    },
+    created : function() {
+      var logger = new px.mobile.Logger(this.tagName, {colors: {debug: 'color:blueviolet;'}});
+
+      this.router = new px.mobile.Router(this.tagName, {});
+
+      px.mobile.utils.addMixin(logger, this);
+
+      //px.mobile.utils.addMixin(router, this.router);
+      this.logApi(this.id, 'created');
+    },
+    ready : function() {
+      this.logApi(this.id, 'ready');
+    },
+    attached : function() {
+      this.logApi('attached', this.id + ' - ' + this.selected);
+      if (!this.id) {
+        throw 'Router' + this.tagName + ' cannot be created without an id!';
+      }
+    }
+  });
+  </script>
+</dom-module>

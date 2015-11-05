@@ -1,0 +1,227 @@
+<html>
+	<head>
+
+		<!-- TODO: dependencies -->
+		<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+		<link rel="import" href="../../polymer/polymer.html">
+
+		<!-- TODO: Extra components -->
+		<link rel="import" href="../../../iron-component-page/iron-component-page.html">
+
+		<!-- TODO: pxm components -->
+
+		<link rel="import" href="../../../px-mobile.html">
+		<link rel="import" href="../../../px-mobile-theme.html">
+
+
+		<!-- TODO: pxm components
+
+		<link rel="import" href="../pxm-page/pxm-pages.html">
+		<link rel="import" href="../pxm-page/pxm-page.html">
+
+		<link rel="import" href="pxm-views.html">
+		<link rel="import" href="pxm-view.html">
+ -->
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+		<script type="text/javascript">
+			var imports = document.querySelectorAll('link[rel="import"]');
+			console.log(imports);
+		</script>
+		<style>
+		body{
+			overflow: hidden;
+		}
+		#prev{
+	background: #000 url('https://dl.dropboxusercontent.com/u/65639888/image/prev.png') no-repeat center;
+	left: 0px;
+}
+#next{
+	background: #000 url('https://dl.dropboxusercontent.com/u/65639888/image/next.png') no-repeat center;
+	right: 0px;
+}
+			.demo {
+				position: relative;
+			}
+			.iphone {
+				margin: 25px auto;
+				border: 10px solid #000;
+				overflow: hidden;
+			}
+
+			px-view:before {
+			content: 'px-view';
+			font-size: 2em;
+			padding: 25px;
+			position: absolute;
+			top: 40%;
+			left: 40%;
+			color: #ddd;
+		}
+
+			.device {
+				position: relative;
+				top: 50px;
+				display: block;
+				width: 395px;
+				height: 613px;
+				margin-left: -20px;
+				font-family: "Helvetica Neue", sans-serif;
+				background-image: url(../www/assets/device-sprite.png);
+				background-repeat: no-repeat;
+				background-position: 0 0;
+				background-size: 300%;
+				-webkit-transition: background-image .1s linear;
+				-moz-transition: background-image .1s linear;
+				transition: background-image .1s linear;
+			}
+
+		</style>
+	</head>
+	<body class="pxm">
+
+					<div class="page-header">
+						<h2>pxm-view
+							<small>This is the pxm-view component.</small>
+						</h2>
+					</div>
+
+					<pxm-navbar class="background-color-alt">
+						<div class="left">
+							<button onclick="appViews.prev()">
+								Prev View
+							</button>
+						</div>
+						<button onclick="appViews.appendView({})" class="btn btn-lg radius background-color-primary btn-ouline no-text-decoration color-white cursor-pointer  opacity-75 hover-opacity-100">
+							Append View
+						</button>
+
+						<div class="right">
+							<button onclick="appViews.next()">
+								Next View
+							</button>
+						</div>
+					</pxm-navbar>
+						<!--
+						<px-navbar title="px-view demo">
+						<nav>
+						<button onclick="appViews.prev()">Prev View</button>
+						<button onclick="appViews.next()">Next View</button>
+						</nav>
+						</px-navbar>
+						-->
+
+						<pxm-router id="appRouter"></pxm-router>
+
+						<pxm-views id="appViews" selected="0">
+
+							<!-- TODO: View 1 -->
+							<pxm-view id="view0" title="Main View" route="#/view0" dynamic-navbar="true" main="true">
+
+								<h1>h1. Heading</h1>
+								<h2>h2. Heading</h2>
+								<h3>h3. Heading</h3>
+								<h4>h4. Heading</h4>
+								<h5>h5. Heading</h5>
+								<h6>h6. Heading</h6>
+								<p>
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
+								</p>
+							</pxm-view>
+
+							<pxm-view id="view-1" title="View 1" route="#/view-1" href="demo/view-1.html" autoload></pxm-view>
+							<pxm-view id="view-2" title="View 2" route="#/view-2" href="demo/view-2.html"></pxm-view>
+							<pxm-view id="view2" title="View" route="#/view2" dynamic-navbar="true" back="true">
+
+								<pxm-page id="page099" class="grid">
+									<section>
+										<div></div>
+									</section>
+
+									<section>
+										<div></div>
+										<div></div>
+									</section>
+
+									<section>
+										<div></div>
+										<div></div>
+										<div></div>
+									</section>
+
+								</pxm-page>
+
+							</pxm-view>
+							<pxm-view id="view3" title="View" route="#/view3">
+
+							</pxm-view>
+							<pxm-view id="view4" title="View" route="#/view4">
+								<div class="demo-view">
+									View 4
+									<br/>
+
+									<pxm-page id="page099" class="demo" route="/users">
+										<section>
+											<div></div>
+										</section>
+
+										<section>
+											<div></div>
+											<div></div>
+										</section>
+
+										<section>
+											<div></div>
+											<div></div>
+											<div></div>
+										</section>
+
+										<section>
+											<div></div>
+											<div></div>
+											<div></div>
+											<div></div>
+										</section>
+									</pxm-page>
+								</div>
+							</pxm-view>
+
+
+							<pxm-view id="view5" title="View" route="#/view5">
+								<div class="demo-view">
+
+									<pxm-page id="page099" class="grid">
+										<section>
+											<div></div>
+										</section>
+
+										<section>
+											<div></div>
+											<div></div>
+										</section>
+
+										<section>
+											<div></div>
+											<div></div>
+											<div></div>
+										</section>
+
+										<section>
+											<div></div>
+											<div></div>
+											<div></div>
+											<div></div>
+										</section>
+									</pxm-page>
+
+								</div>
+							</pxm-view>
+						</pxm-views>
+
+
+
+				</div>
+			</section>
+
+		</div>
+	</body>
+</html>

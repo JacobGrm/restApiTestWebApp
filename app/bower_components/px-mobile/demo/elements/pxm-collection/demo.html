@@ -1,0 +1,177 @@
+<html>
+  <head>
+    <title>px-collection demo</title>
+
+    <!-- TODO: Dependencies-->
+    <script src="../webcomponentsjs/webcomponents-lite.min.js"></script>
+    <link rel="import" href="../polymer/polymer.html">
+
+    <!-- TODO: Testing -->
+    <link rel="stylesheet" href="../jasmine/lib/jasmine-core/jasmine.css"/>
+    <script src="../jasmine/lib/jasmine-core/json2.js"></script>
+    <script src="../jasmine/lib/jasmine-core/jasmine.js"></script>
+    <script src="../jasmine/lib/jasmine-core/jasmine-html.js"></script>
+    <script src="../jasmine/lib/jasmine-core/boot.js"></script>
+
+    <style media="screen">
+      body{
+        padding: 25px;
+      }
+    </style>
+
+    <!-- TODO: pxm components -->
+    <link rel="import" href="px-collection.html">
+
+  </head>
+  <body>
+
+    <!-- TODO: px-view docs -->
+    <h2>px-collection</h2>
+    <p>
+      The px-collection element enables documents to be fetched from Couchbase and rendered to the display.
+    </p>
+
+
+    <!-- TODO: Example usage -->
+    <dom-module id="collection-module">
+      <style media="screen">
+        legend {
+          font-size: 1.2em;
+          margin: 25px 0;
+          border-bottom: 1px solid #ccc;
+          width: 100%;
+          display: block;
+        }
+      </style>
+      <template>
+
+        <legend>
+          Actions
+        </legend>
+        <button type="button" on-click="fetchItems">
+          Fetch Items
+        </button>
+        <button type="button" on-click="clearItems">
+          Clear Items
+        </button>
+        <button type="button" on-click="addItem">
+          Add Item
+        </button>
+        <button type="button" on-click="sync">
+          Sync
+        </button>
+        <button type="button" on-click="find">
+          Find
+        </button>
+        <button type="button" on-click="findWhere">
+          Find Where
+        </button>
+
+        <legend>
+          Options
+        </legend>
+
+        <label>Limit:
+          <input type="text"
+          value="{{limit}}"
+          placeholder="Limit">
+        </label>
+
+        <px-collection id="collection"
+          base-url="{{url}}"
+          params="{{params}}"
+          last-response="{{data}}"></px-collection>
+
+        <legend>
+          Items
+        </legend>
+        <ol>
+          <template is="dom-repeat" items="{{data.rows}}">
+            <li>
+              <a href="#" on-click="selectItem"><span>{{item.id}}</span></a>
+              <button type="button" on-click="removeItem">
+                removeItem
+              </button>
+            </li>
+          </template>
+        </ol>
+        <legend>
+          Selected Item
+        </legend>
+        <div>{{selectedItem.id}}</div>
+      </template>
+      <script>
+        HTMLImports.whenReady(function() {
+          Polymer({
+            is : 'collection-module',
+            behaviors : [px.collection],
+            properties : {
+              url: {
+                type: String
+              },
+              selectedItem : {
+                type : Object
+              },
+              params : {
+                type : Object
+              },
+              limit : {
+                type : Number,
+                value : 25,
+                notify : true
+              }
+            },
+            selectItem : function(e) {
+              e.preventDefault();
+              var model = e.model;
+              this.selectedItem = model.item;
+              console.log('select', this.selectedItem);
+              return false;
+            },
+            addItem : function() {
+              return this.push('data.rows', {
+                id : 'test-document-' + Date.now()
+              });
+            },
+            removeItem : function(e) {
+              console.log(e);
+              var model = e.model.item;
+                  model.doc = model.doc || {};
+                  model.doc._deleted = true;
+
+              console.log('remove', model, model.index);
+              return this.splice('data.rows', model.index, 1);
+            },
+            fetchItems : function() {
+              this.data = {};
+              var limit = this.limit;
+              console.log(this.attributes);
+              return this.$.collection.fetch(this.params);
+            },
+            clearItems : function() {
+              return this.data = {
+                rows : []
+              };
+            },
+            sync : function() {
+              this.data.rows.forEach(function(row) {
+                console.warn('updating', row);
+              });
+              console.warn('sync', this.data, this);
+            }
+          });
+        });
+
+      </script>
+    </dom-module>
+
+    <h3>Example Custom implementation</h3>
+    <!-- NOTE: Usage in application -->
+    <collection-module id="example" limit="25" url="http://localhost:5984/default"></collection-module>
+
+    <hr>
+    <h1>Unit Tests</h1>
+    <script src="test/px-collection-spec.js"></script>
+    <div id="HTMLReporter" class="jasmine_reporter"></div>
+  </body>
+</html>

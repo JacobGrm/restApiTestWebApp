@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">specs/db-spec.js | px-mobile API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+<link data-ice="userStyle" rel="stylesheet" href="user/css/0-docs.css">
+</head>
+<body class="layout-container">
+
+<header>
+  <a href="./">Home</a>
+  <a href="identifiers.html">Identifier</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  <a data-ice="repoURL" href="https://github.build.ge.com/PredixComponents/px-mobile.git">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/app.js~App.html">App</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base.js~BaseClass.html">BaseClass</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/collection.js~Collection.html">Collection</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/core.js~Core.html">Core</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/db.js~DB.html">DB</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/dom.js~DOM.html">DOM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/http.js~HTTP.html">HTTP</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/interface.js~Interface.html">Interface</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/log.js~Logger.html">Logger</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/model.js~Model.html">Model</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/page.js~Page.html">Page</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/pages.js~Pages.html">Pages</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/pubsub.js~PubSub.html">PubSub</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/router.js~Router.html">Router</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/router.js~RouterHistory.html">RouterHistory</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/service-locator.js~ServiceLocator.html">ServiceLocator</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/simple-router.js~SimpleRouter.html">SimpleRouter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/view.js~View.html">View</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/views.js~Views.html">Views</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-dom">dom</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-addMixin">addMixin</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-debounce">debounce</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-extend">extend</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-extendClass">extendClass</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-extendDeep">extendDeep</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-mix">mix</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-mixin">mixin</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-resolveURL">resolveURL</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-type">type</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-uuid">uuid</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-$">$</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-Interfaces">Interfaces</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-aggregation">aggregation</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">specs/db-spec.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/** @test {DB} */
+describe(&apos;px.mobile.DB&apos;, function() {
+  var db = null,
+    testAttachmentDoc = &apos;test-doc-attachment-&apos; + Date.now(),
+    successCallback, errorCallback,
+    testObj = {
+      _id: &apos;test-&apos; + Date.now(),
+      title: &apos;Test Doc&apos;
+    },
+    docs = [{
+      _id: &apos;test-doc-1-&apos; + Date.now(),
+      name: &apos;Test Doc 1&apos;
+    }, {
+      _id: &apos;test-doc-2-&apos; + Date.now(),
+      name: &apos;Test Doc 2&apos;
+    }, {
+      _id: &apos;test-doc-3-&apos; + Date.now(),
+      name: &apos;Test Doc 3&apos;
+    }];
+
+  before(function() {
+    window.db = db = new px.mobile.DB(&apos;test&apos;, {
+      baseUrl: &apos;/default&apos;
+    });
+  });
+
+
+  it(&apos;should be defined&apos;, function() {
+    assert.ok(px.mobile.DB);
+  });
+
+  it(&apos;should have methods: allDocs, get, put, post, remove, bulkDocs, getAttachment, saveAttachment&apos;, function(done) {
+    assert.ok(db.allDocs);
+    assert.ok(db.get);
+    assert.ok(db.post);
+    assert.ok(db.put);
+    assert.ok(db.remove);
+    assert.ok(db.getAttachment);
+    assert.ok(db.saveAttachment);
+    done();
+  });
+
+  xdescribe(&apos;Changes&apos;, function() {
+    var changes, changeHandlers = {};
+
+    beforeEach(function() {
+      changeHandlers.changeHandler = function(done) {
+        done();
+      };
+      changeHandlers.completeHandler = function(done) {
+        done();
+      };
+      changeHandlers.errorHandler = function(done) {
+        done();
+      };
+      changes = db.changes({
+          since: &apos;now&apos;,
+          live: true,
+          interval: 1000,
+          include_docs: true
+        })
+        .on(&apos;change&apos;, changeHandlers.changeHandler)
+        .on(&apos;complete&apos;, changeHandlers.completeHandler)
+        .on(&apos;error&apos;, changeHandlers.errorHandler);
+
+      //jasmine.clock().install();
+    });
+
+    afterEach(function() {
+      //jasmine.clock().uninstall();
+      changes.cancel();
+    });
+
+    /** @test {DB#changes} */
+    it(&apos;changes() - should request changes and invoke callbacks on events&apos;, function(done) {
+
+      //assert.ok(changeHandlers.changeHandler).not.toHaveBeenCalled();
+
+      setTimeout(function() {
+        console.warn(changeHandlers.changeHandler);
+        assert.ok(changeHandlers.changeHandler);
+        done();
+      }, 2000);
+    });
+
+  });
+
+  /** @test {DB#info} */
+  it(&apos;info() - should resolve promise on success with database info&apos;, function(done) {
+    db.info().then(function(resp) {
+      assert.equal(resp.status, 200);
+      assert.ok(resp.data);
+      assert.ok(resp.data.db_name);
+      assert.ok(resp.data.update_seq);
+
+      done();
+    }, window.failSpec);
+  });
+
+  /** @test {DB#bulkDocs} */
+  it(&apos;bulkDocs(docs) - should resolve promise on success&apos;, function(done) {
+    db.bulkDocs(docs).then(function(resp) {
+      docs = resp.data;
+      assert.equal(resp.status, 201);
+      assert.equal(resp.data.length, 3);
+      done();
+    }, window.failSpec);
+  });
+
+  /** @test {DB#bulkDocs} */
+  it(&apos;bulkDocs(docs) - should remove doc if _delete flag is set&apos;, function(done) {
+    docs.forEach(function(doc) {
+      if (doc._rev) {
+        doc._deleted = true;
+      }
+    });
+    db.bulkDocs(docs).then(function(resp) {
+      docs = resp.data;
+      assert.equal(resp.status, 201);
+      assert.equal(resp.data.length, 3);
+      done();
+    }, window.failSpec);
+  });
+
+  /** @test {DB#allDocs} */
+  it(&apos;allDocs(options) - should resolve promise on success&apos;, function(done) {
+    db.allDocs({
+      limit: 5,
+      include_docs: true
+    }).then(function(resp) {
+      assert.equal(resp.status, 200);
+      assert.ok(resp.data.rows);
+      assert.equal(resp.data.rows.length, 5);
+      done();
+    }, window.failSpec);
+  });
+
+
+  /** @test {DB#put} */
+  it(&apos;put(doc) - should resolve promise on success&apos;, function(done) {
+    db.put(testObj).then(function(resp) {
+      assert.equal(resp.status, 201);
+      assert.ok(resp.data.rev);
+      done();
+    });
+  });
+
+  /** @test {DB#get} */
+  it(&apos;get(id) - should resolve promise on success&apos;, function(done) {
+    db.get(testObj._id).then(function(resp) {
+      assert.equal(resp.status, 200);
+      assert.ok(resp.data._rev);
+      done();
+    }, window.failSpec);
+  });
+
+  /** @test {DB#remove} */
+  it(&apos;remove(id, rev) - should resolve promise on success&apos;, function(done) {
+    db.get(testObj._id).then(function(resp) {
+      testObj._rev = resp.data._rev;
+      db.remove(testObj._id, testObj._rev).then(function(res) {
+        assert.equal(res.status, 200);
+        done();
+      }, window.failSpec);
+    });
+  });
+
+  /** @test {DB#post} */
+  it(&apos;post(doc) - should insert document with generated id and resolve promise on success.&apos;, function(done) {
+    db.post({
+      title: &apos;New Doc&apos;
+    }).then(function(resp) {
+      assert.equal(resp.status, 201);
+      assert.ok(resp.data.id);
+      assert.ok(resp.data.rev);
+      done();
+    }, window.failSpec);
+  });
+
+
+
+  /** @test {DB#saveAttachment} */
+  it(&apos;saveAttachment(id, rev, filename, type, file) - should save file attachment&apos;,
+    function(done) {
+      var aFileParts = [&apos;&lt;a id=&quot;a&quot;&gt;&lt;b id=&quot;b&quot;&gt;hey!&lt;/b&gt;&lt;/a&gt;&apos;];
+      var myBlob = new Blob(aFileParts, {
+        type: &apos;text/html&apos;
+      });
+      db.put({
+        _id: testAttachmentDoc
+      }).then(function(resp) {
+        assert.equal(resp.ok, true);
+        db.get(testAttachmentDoc).then(function(resp) {
+          assert.equal(resp.ok, true);
+          db.saveAttachment(resp.data._id, resp.data._rev, &apos;file.html&apos;, myBlob.type,
+            myBlob).then(function(resp) {
+            assert.equal(resp.ok, true);
+            done();
+          }, window.failSpec);
+        }, window.failSpec);
+      }, window.failSpec);
+
+    });
+
+  /** @test {DB#getAttachment} */
+  it(&apos;getAttachment(id, filename) - should return file attachment&apos;, function(done) {
+    db.getAttachment(testAttachmentDoc, &apos;file.html&apos;).then(function(resp) {
+      assert.equal(resp.ok, true);
+      done();
+    }, window.failSpec);
+  });
+
+
+});
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.3.0)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

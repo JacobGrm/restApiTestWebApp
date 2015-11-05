@@ -1,0 +1,27 @@
+mixin item(name)
+  li=name
+
+//- index.jade
+extends ./layout
+
+block title
+  title px-mobile demo
+  
+block content  
+  article#welcome
+    include ./_welcome
+  hr
+  article#getting-started.col-12
+    include ./getting-started
+  hr
+  article#css.col-12
+    include ./css
+  hr
+  article#components.col-12
+    include ./components
+  hr
+  article#javascript.col-12
+    include ./javascript
+  hr
+  article#examples.col-12
+    include ./examples

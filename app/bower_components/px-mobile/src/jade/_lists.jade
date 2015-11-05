@@ -1,0 +1,61 @@
+script.
+  var basicItems = [ 
+   {title: 'Item 1'},
+   {title: 'Item 2'},
+   {title: 'Item 3'},
+   {title: 'Item 4'}
+  ];
+  var textItems = [ 
+   {title: 'Item 1', subtitle: 'Subtitle'},
+   {title: 'Item 2', subtitle: 'Subtitle'},
+   {title: 'Item 3', subtitle: 'Subtitle'},
+   {title: 'Item 4', subtitle: 'Subtitle'}
+  ];
+  var mediaItems = [ 
+   {title: 'Item 1', subtitle: 'Subtitle', image: 'http://placehold.it/100'},
+   {title: 'Item 2', subtitle: 'Subtitle', image: 'http://placehold.it/100'},
+   {title: 'Item 3', subtitle: 'Subtitle', image: 'http://placehold.it/100'},
+   {title: 'Item 4', subtitle: 'Subtitle', image: 'http://placehold.it/100'}
+  ];
+  HTMLImports.whenReady(function(){
+    document.getElementById('list1').data = basicItems;
+    document.getElementById('list2').data = textItems;
+    document.getElementById('list3').data = mediaItems;
+  });
+
+mixin link(href, name)
+  //- attributes == {class: "btn"}
+  a(class!=attributes.class, href=href)= name
+
+
+mixin list(id, ...items)
+  ul(id=id)
+    each item in items
+      li= item
+
+    
+
+
+    - var n = 0
+    ul
+      while n < 4
+        li= n++
+
+
+.page-header
+  h2 Lists
+
+.container.demo
+  .col-12
+    h3 Basic list
+    pxm-list#list1
+    
+    ul.table-view
+      each val in [1, 2, 3, 4, 5]
+        li= val
+    
+    h3 Title list
+    pxm-list#list2
+    
+    h3 Media list
+    pxm-list#list3

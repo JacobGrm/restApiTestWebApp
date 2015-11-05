@@ -1,0 +1,20 @@
+function template(locals) {
+var buf = [];
+var jade_mixins = {};
+var jade_interp;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+buf.push("<div class=\"page-header\"><h2>Cards<small>An editable container that resides within the content area of your screen</small></h2></div><div class=\"grid full-width gutters-sm\"><pxm-card title=\"Basic Card\"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Duis aute irure dolor in reprehenderit in voluptate velit.</p></pxm-card><pxm-card title=\"Form Card\"><form><input type=\"text\" placeholder=\"Enter title here...\"/><textarea placeholder=\"Lorem ipsum dolor sit amet...\" rows=\"10\"></textarea><button class=\"button block\">Reset</button><button class=\"button block primary\">Submit</button></form></pxm-card></div><div class=\"grid\"><pxm-card title=\"Image Card\"><img src=\"images/image.png\" style=\"max-height:400px\" class=\"responsive\"/></pxm-card><pxm-card title=\"Map Card\"><img src=\"images/staticmap.png\" style=\"max-height:400px\" class=\"responsive\"/></pxm-card></div><div class=\"grid\"><pxm-card name=\"John Doe\" facebook=\"facebook\"><img src=\"images/image.png\" style=\"max-height:400px\" class=\"responsive\"/></pxm-card><pxm-card name=\"John Doe\" facebook=\"facebook\"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></pxm-card></div>");;return buf.join("");
+}

@@ -1,0 +1,239 @@
+
+<!-- TODO: pxm components
+<link rel="import" href="../pg-card/pg-card.html"/>
+<link rel="import" href="../pxm-card/pxm-deck.html"/>
+<link rel="import" href="../pxm-card/pxm-card.html"/>
+<script src="../../pxm-mobile.js"></script>
+-->
+
+
+<link rel="import" href="../pxm-page/pxm-pages.html"/>
+<link rel="import" href="../pxm-page/pxm-page.html"/>
+<link rel="import" href="../pxm-navbar/component.html"/>
+<link rel="import" href="pxm-view-behavior.html"/>
+<!--
+
+<link rel="stylesheet" href="pxm-view.css"/>
+
+
+## Usage
+To use this component in your custom component do the following:
+
+```
+<dom-module id="demo-view">
+  <template>
+    <pxm-view id="demo-card-view">
+      <pxm-card header-text="Sample Card">
+        Card content
+      <pxm-card>
+    </pxm-view>
+  </template>
+</dom-module>
+<script>
+  Polymer({
+  is: 'demo-view',
+    init: function(){
+      // this is where you can do some initialization of your card
+    },
+    behaviors: [pxm.view]
+  });
+</script>
+```
+@element pxm-view
+@blurb Element containing basic styling and behaviors (API) for card
+@demo demo.html
+@homepage index.html
+-->
+<dom-module id="pxm-view">
+  <style>
+  :host{
+    -moz-transition: all .3 ease-in-out;
+    -webkit-transition: all .3 ease-in-out;
+    transition: all .3  ease-in-out;
+    position: absolute;
+    top:0px;
+    left:0px;
+    right:0px;
+    bottom:0px;
+  }
+
+
+  </style>
+  <template>
+    <section class="overthrow" on-track="handleTrack">
+      <content></content>
+    </section>
+  </template>
+</dom-module>
+<script type="text/javascript">
+  Polymer({
+    is : 'pxm-view',
+    created : function() {
+      if(!this.inTrans){
+        this.inTrans = 'moveFromRight';
+        this.outTrans = 'moveToLeft';
+      }
+    },
+    attached : function() {
+      // TODO: Fire event
+      this.fire('pxm-view-ready', this);
+    },
+    handleTrack: function(e) {
+      switch(e.detail.state) {
+        case 'start':
+          this.message = 'Tracking started!';
+          break;
+        case 'track':
+          this.message = 'Tracking in progress... ' +
+            e.detail.x + ', ' + e.detail.y;
+          break;
+        case 'end':
+          this.message = 'Tracking ended!';
+          break;
+      }
+    },
+		properties: {
+
+			//String title for the view
+			title: {
+				type: String,
+				value: 'View Title'
+			},
+
+			//String containing the route format
+			route: {
+				type: String
+			},
+
+			//Boolean to auto load href attribute value
+			autoload: {
+				type: Boolean
+			},
+
+			//Path to remote view that will be loaded
+			href: {
+				type: String,
+				notify: true,
+				value: null,
+				observer: '_hrefChanged'
+			},
+
+			//The in effect
+			inTrans: {
+				type: String,
+				value: 'moveFromRight'
+			},
+
+			//The out effect
+			outTrans: {
+				type: String,
+				value: 'moveToLeft'
+			},
+
+			//Returns object with intialized parameters. You can access and rewrite some parameters like mainView.params.linksView = '.another-view'
+			params: {
+				type: Object
+			},
+			//Returns array with View's history. Each array element contains URL of loaded page
+			history: {
+				type: Array
+			},
+			//Returns object with cached pages. It is available only if you use dynamically generated content
+			contentCache: {
+				type: Object
+			},
+			//Returns string with url of currently active (loaded) page
+			url: {
+				type: String
+			},
+			//Returns HTMLElement link to pages element
+			pagesContainer:{
+				type: Object
+			},
+			//Contains object with Page Data of currently active page
+			activePage:{
+				type: Object
+			},
+
+			//Returns true if this view is main view
+			main:{
+				type: Boolean
+			},
+
+			//Boolean to auto show the navbar.
+			dynamicNavbar:{
+				type: Boolean
+			},
+
+			//Object with router methods
+			router:{
+				type: Object
+			}
+
+		},
+
+		_hrefChanged: function (newVal, oldVal) {
+			var _this = this;
+			var content = Polymer.dom(_this.root).querySelector('content');
+			if (newVal) {
+				this.debounce('injectHtml', function () {
+					console.warn(this.id, 'Load remote html', newVal);
+					_this.loadHtml(newVal);
+				}, 1000);
+			}
+		},
+		loadHtml: function (url) {
+			var _this = this, html = '';
+			this.importHref(url, function (e) {
+				html = e.target.import.body.innerHTML;
+
+				console.warn('inject px-view html', _this.id);
+				_this.html(html);
+
+			}, function (e) {
+				console.error('Error loading view', e);
+			});
+		},
+    
+		/**
+		 * Fired when `element` changes its awesomeness level.
+		 *
+		 * @event awesome-change
+		 * @param {number} newAwesome New level of awesomeness.
+		 */
+		created: function () {
+			var logger = new px.mobile.Logger(this.tagName + '-behavior', {colors: {debug: 'color:cadetblue;'}});
+			px.mobile.utils.addMixin(logger, this);
+		},
+
+		ready: function () {
+			this.logApi('ready', this.id);
+		},
+
+		//Hide navbar in this View
+		hideNavbar: function () {
+			this.logApi('hideNavbar', this.id);
+		},
+
+		//Show navbar in this View
+		showNavbar: function () {
+			this.logApi('showNavbar', this.id);
+		},
+
+		//Hide toolbar in this View
+		hideToolbar: function () {
+			this.logApi('hideToolbar', this.id);
+		},
+
+		//Show toolbar in this View
+		showToolbar: function () {
+			this.logApi('showToolbar', this.id);
+		},
+
+		//Destroy initialized View, detach swipe events, and disable navigation
+		destroy: function(){
+
+		}
+  });
+
+</script>

@@ -1,0 +1,114 @@
+mixin bg(name)
+  //- attributes == {class: "btn"}
+  li.background-color.background-color-primary(class=name)
+    span=name
+    
+.page-header
+  h2 Typography
+pxm-example
+  h1 Heading Size 1
+  h2 Heading Size 2
+  h3 Heading Size 3
+  h4 Heading Size 4
+  h5 Heading Size 5
+  h6 Heading Size 6
+  
+//
+  h1 h1. pxMobile
+    small Secondary text
+  h2 h2. pxMobile
+    small Secondary text
+  h3 h3. pxMobile
+    small Secondary text
+  h4 h4. pxMobile
+    small Secondary text
+  h5 h5. pxMobile
+    small Secondary text
+  h6 h6. pxMobile
+    small Secondary text
+  
+  p Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+  
+.page-header
+  h2 Utility Classes
+    small An extensive list of small utility classes
+  
+.page-header
+  h3 Test Alignment
+    small Text alignment helpers
+pxm-example
+  p.text-left Left aligned text.
+  p.text-center Center aligned text.
+  p.text-right Right aligned text.
+  p.text-justify Justified text.
+  p.text-nowrap Nowrap text.
+
+.page-header
+  h3 Text Transform
+pxm-example
+  p.text-uppercase Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+  p.text-lowercase Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+  p.text-capitalize Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+
+.page-header
+  h3 Font Color
+pxm-example
+  each val in ['primary', 'alt', 'dark', 'light', 'green', 'red', 'blue', 'yellow', 'white']
+    p(class='color-'+val) Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+ 
+.page-header
+  h3 Font Weight
+pxm-example 
+  each val in ['normal', 'italic', 'oblique', 'bold', 'bolder', 'lighter']
+    p(class='font-'+val) Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+
+.page-header
+  h3 Margin
+
+.page-header
+  h3 Padding
+    
+.page-header
+  h3 Display
+  
+.page-header
+  h3 Overflow
+  
+.page-header
+  h3 Transition
+  ul.grid-container.background-colors
+    each val in [ 'transition-background transition-normal hover-background-color-green', 'transition-background transition-slow hover-background-color-green', 'transition-background transition-slow-2x hover-background-color-green', 'transition-background transition-fast hover-background-color-green']
+      +bg(val)
+
+.page-header
+  h3 Scroll
+
+.page-header
+  h3 Floats
+  
+.page-header
+  h3 Opacity
+  ul.grid-container.background-colors
+    each val in [ 'hover-opacity-0', 'hover-opacity-25', 'hover-opacity-50', 'hover-opacity-75', 'hover-opacity-100']
+      +bg(val)
+      
+.page-header
+  h3 Scale
+  ul.grid-container.background-colors
+    each val in [ 'hover-scale-0', 'hover-scale-25', 'hover-scale-50', 'hover-scale-75', 'hover-scale-100', 'hover-scale-105']
+      +bg(val)
+      
+.page-header
+  h3 Cursors
+table
+   tr 
+     th Class
+     th Example
+   tbody
+     each val in ['pointer', 'default', 'auto', 'none', 'not-allowed', 'help', 'no-drop', 'progress', 'cell', 'wait', 'text', 'copy', 'move','col-resize', 'context-menu','row-resize', 'n-resize', 'e-resize', 's-resize',' w-resize', 'grab', 'grabbing', 'zoom-in', 'zoom-out']
+      tr
+        td
+          code.color-alt=val
+        td.padding-5(class='cursor-'+val)
+          
+       

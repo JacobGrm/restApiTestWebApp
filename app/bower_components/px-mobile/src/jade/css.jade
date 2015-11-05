@@ -1,0 +1,17 @@
+extends ./layout
+block title
+	title px-mobile | UI Elements
+block content 
+	.hero.container.full-width
+		.col-sm-12.text-center
+			h1 UI Elements
+			p Individual pieces of a consistent visual language used to represent user friendly interfaces
+			//p HTML elements enhanced with extensible classes, and an advanced Flexbox grid system.
+	.container.full-width.gutters
+		.col-12
+			include ./_alerts
+			include ./_buttons
+			include ./_colors
+			include ./_forms
+			include ./_grids
+			include ./_globals

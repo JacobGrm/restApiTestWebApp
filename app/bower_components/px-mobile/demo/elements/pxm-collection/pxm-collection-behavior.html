@@ -1,0 +1,190 @@
+<link rel="import" href="../pxm-log/pxm-log-behavior.html"/>
+
+<script type="text/javascript">
+  px.mobile.behaviors = px.mobile.behaviors || {};
+  /*TODO:
+  px-collection
+	methods
+		fetch(opt)
+		add(model)
+		remove(id) -
+		find(obj)
+		findWhere(obj)
+		url(string)
+		parse(resp)
+		sync:{ onstart, oncomplete, onerror, onchange }
+		get(id) -
+	properties
+		model
+		baseUrl
+		idField
+  */
+  px.collection = {
+    properties:{
+			//The array of model objects
+			models : {
+				type : Array,
+				value : []
+			},
+
+			//The query params
+			params : {
+				type : Object,
+				notify : true,
+				reflectToAttribute : true,
+				observer : '_paramsChanged'
+			},
+
+      //The URL target of the data source
+      baseUrl : {
+        type : String
+      },
+
+      //The last response data object that will be populated
+      lastResponse : {
+        type : Object,
+        readonly : true,
+        notify : true,
+        value : {}
+      },
+
+      //If true, automatically performs an Ajax request when either url or params changes
+      auto : {
+        type : Boolean
+      },
+
+      //Length of time in milliseconds to debounce multiple requests
+      debounceDuration : {
+        type : Number,
+        value : 25
+      },
+
+      //The instance of the data source
+      db : {
+        type : Object
+      },
+
+      //The list of model items
+      items : {
+        type : Object,
+        value : {}
+      }
+    },
+    created : function() {
+      this.models = [];
+      var logger = new px.mobile.Logger(this.localName);
+      px.mobile.utils.addMixin(logger, this);
+      this.logApi('1. created', this.id);
+    },
+
+    ready : function() {
+      this.logApi('2. ready', this.id);
+    },
+
+    attached : function() {
+      var self = this;
+      if (!this.id) {
+        throw 'Model ' + this.tagName + ' cannot be created without an id!';
+      }
+
+      this.logApi('3. attached', this.id);
+    },
+
+    //Handle sending another request.
+    fetch : function(params) {
+      this.logApi('fetch', params);
+      var self = this;
+
+      if (!self.db) {
+        self.db = new px.mobile.DB(this.id, {baseUrl: self.baseUrl});
+      }
+
+      self.debounce('fetch', function() {
+        self.db.allDocs(params).then(function(resp) {
+          self.lastResponse = resp.data;
+          self.items = resp.data.rows;
+        });
+      }, self.debounceDuration);
+    },
+
+    addModels : function(data) {
+      var self = this;
+      self.models = [];
+      data.forEach(function(row) {
+        console.log('add model', row);
+        self.add(row.doc || row);
+      });
+    },
+
+    //Add a model to the list of items.
+    add : function(doc) {
+      var _model = new px.mobile.Model(doc._id || doc.id, {
+        data : doc
+      });
+      this.models.push(_model);
+      console.log('adding', model);
+    },
+
+    // Remove a model from the list of items.
+    remove : function(model) {
+      if (type(model) === 'string') {
+        console.warn('Find by _id', model);
+      }
+      if (type(model) === 'number') {
+        console.warn('Find by index', model);
+        return this.items.splice(1, model);
+      }
+      if (type(model) === 'object') {
+        console.warn('Find by model', model);
+        return this.items.splice(1, this.items.indexOf(model));
+      }
+
+    },
+
+    // Filter models based on filter passed.
+    find : function(options) {
+      this.items.filter(function(item) {
+        //logic
+        return true;
+      });
+    },
+
+    //Return an array containing the attributes hash of each model (via toJSON) in the collection.
+    toJSON : function() {
+      return JSON.stringify(this.items);
+    },
+
+    //Handle preparing the request when the params change.
+    _paramsChanged : function(newParams, oldParams) {
+      this.logApi('_paramsChanged', newParams);
+      var params = newParams || {};
+
+      if (this.params instanceof String) {
+        try {
+          params = JSON.parse(this.deserialize(this.params, String));
+          this.fetch(params);
+        } catch (e) {
+          console.error('[INFO] - INVALID JSON params - sending anyway', params);
+
+        }
+      } else {
+      params = this.deserialize(this.params, Object);
+       this.fetch(params);
+      }
+
+
+    },
+    /**
+     * I compute the base url, if baseUrl is not set, Ill look up to my parent for th eproperty.
+     */
+    computeBaseUrl: function(url){
+      console.warn('FInd parent url', this.parent.baseUrl);
+
+      console.log('computing base url', url);
+      if(url){
+        return url;
+      }
+
+    }
+  };
+</script>

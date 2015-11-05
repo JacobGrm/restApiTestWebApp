@@ -1,0 +1,264 @@
+@import "_variables";
+@import "_mixins";
+
+@each $color in red, blue, green, yellow {
+  .btn-#{$color} {
+    background-color: $color;
+  }
+}
+
+.btn-group{
+  display: flex;
+  .btn, button,
+  .button{
+    flex: 1;
+    border-radius: 0;
+    -webkit-appearance: inherit;
+    &:first-of-type {
+      border-radius: 3px 0 0 3px;
+    }
+    &:last-of-type {
+      border-radius: 0 3px 3px 0;
+    }
+    + .btn {
+      margin-left: 0;
+    }
+  }
+}
+
+
+// Buttons
+// --------------------------------------------------
+
+// TODO: Variables
+$btn-border: 1px solid #b1b1bc;
+$btn-bg:#e4e4ea;
+
+.btn, .button, button {
+  //Icon buttons
+  i {
+    padding: 5px;
+  }
+  @include font-size(1);
+  position: relative;
+  display: inline-block;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+  border: $btn-border;
+  border-radius: 3px;
+  font-weight: $font-weight-light;
+  color: #3b3b3f;
+  background-color: $btn-bg;
+  overflow: visible;
+  margin: 0;
+  padding: .3rem 1rem;
+  font: inherit;
+  -webkit-font-smoothing: antialiased;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  text-transform: none;
+  white-space: nowrap;
+
+//  min-width: 100px;
+line-height: calc(2em - 2px);
+  &:hover, &:active, &.active {
+    border-color: #9999a3;
+    background-color: #b1b1bc;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
+  }
+
+  // Active & filled button styles
+  &:hover, &:active, &.active {
+    color: inherit; // Overriding the gloabl style for all anchors.
+
+  }
+
+  // Primary button (Default color is blue)
+  &.primary {
+    @include colors(#fff, $primary-color, $primary-border-color);
+    &:hover, &:active, &.active {
+      @include colors(#fff, darken($primary-color, 10%), darken($primary-border-color, 10%));
+    }
+  }
+  //Alt button * default color is light blue
+  &.secondary {
+    @include colors(#3e87e8, #ffffff, #b1b1bc);
+    &:hover, &:active, &.active {
+      @include colors(#3e87e8, darken(#fff, 10%), darken(#b1b1bc, 25%));
+    }
+  }
+
+  // Positive button (Default color is green)
+  &.positive{
+    @include colors(#fff, $positive-color, $positive-color);
+    &:hover, &:active, &.active {
+      @include colors(#fff, darken($positive-color, 10%), darken($positive-color, 10%));
+    }
+  }
+
+  // Negative button (Default color is red)
+  &.negative {
+    @include colors(#fff, $negative-color, $negative-color);
+    &:hover, &:active, &.active {
+      @include colors(#fff, darken($negative-color, 10%), darken($negative-color, 10%));
+    }
+  }
+
+  // Outlined buttons
+  &.outline {
+    @include colors(null, transparent, null);
+    &.primary {
+      @include colors($primary-color, transparent, $primary-border-color);
+    }
+    &.secondary {
+      @include colors(#3e87e8, transparent, #b1b1bc);
+    }
+    &.positive {
+      @include colors($positive-color, transparent, darken($positive-color, 10%));
+    }
+    &.negative {
+      @include colors($negative-color, transparent, darken($negative-color, 10%));
+    }
+  }
+
+
+  // Active states
+  &.primary:active,
+  &.positive:active,
+  &.negative:active {
+    //color: #fff;
+  }
+
+  // Disabled styles & filled button active styles
+  &:disabled, &.disabled {
+    opacity: .6;
+    pointer-events: none;
+    cursor: not-allowed;
+  }
+  &.radius {
+    border-radius: 5px;
+  }
+  &.large {
+    padding: 10px 20px;
+    @include font-size(1.2);
+  }
+  &.small {
+    padding: 6px;
+    @include font-size(.9);
+  }
+  &.pill{
+    border-radius: 20px;
+  }
+  &.round{
+    border-radius: 50%;
+  }
+
+
+
+  // TODO: Block buttons
+  &.block{
+    width: 100%;
+    padding: 10px 0;
+    //margin-bottom: 10px;
+    @include font-size(1.1);
+    & + .block {
+      //border-top-color: transparent;
+    }
+
+  // Primary button (Default color is blue)
+  &.primary {
+    @include colors(#fff, $primary-color, $primary-color);
+    &:hover, &:active, &.active {
+      @include colors(#fff, darken($primary-color, 10%), darken($primary-border-color, 10%));
+    }
+  }
+
+  &.secondary {
+    @include colors(#3e87e8, #ffffff, #b1b1bc);
+    &:hover, &:active, &.active {
+      @include colors(#3e87e8, darken(#fff, 10%), darken(#b1b1bc, 10%));
+    }
+  }
+
+  // Positive button (Default color is green)
+  &.positive{
+    @include colors(#fff, $positive-color, $positive-color);
+    &:hover, &:active, &.active {
+      @include colors(#fff, darken($positive-color, 10%), darken($positive-color, 10%));
+    }
+  }
+
+  // Negative button (Default color is red)
+  &.negative {
+    @include colors(#fff, $negative-color, $negative-color);
+    &:hover, &:active, &.active {
+      @include colors(#fff, darken($negative-color, 10%), darken($negative-color, 10%));
+    }
+  }
+
+  //Bare
+  &.bare{
+    background-color: transparent;
+    border-color: transparent;
+    box-shadow: none;
+  }
+
+  // Outlined buttons
+  &.outline {
+    @include colors(null, transparent, null);
+    &:hover, &:active, &.active {
+      @include colors(null, transparent, null);
+    }
+    &.primary {
+      @include colors($primary-color, transparent, $primary-border-color);
+    }
+    &.secondary {
+      @include colors(#3e87e8, transparent, #b1b1bc);
+    }
+    &.positive {
+      @include colors($positive-color, transparent, $positive-color);
+    }
+    &.negative {
+      @include colors($negative-color, transparent, $negative-color);
+    }
+
+    // Active states
+    &.primary:active,
+    &.positive:active,
+    &.negative:active {
+    //  color: #fff;
+    }
+  }
+
+  // Link button (Buttons that look like links)
+  &.link {
+    padding-top: 6px;
+    padding-bottom: 6px;
+    color: $primary-color;
+    background-color: transparent;
+    box-shadow: none;
+    border: 0;
+    &:active,
+    &.active {
+      color: darken($primary-color, 10%);
+      background-color: transparent;
+    }
+  }
+
+  // Block level buttons (full width buttons)
+  &.block {
+    display: block;
+    width: 100%;
+    padding: 5px 0;
+    margin-bottom: 5px;
+
+  }
+ }
+}
+// Button overrides
+// --------------------------------------------------
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+  width: 100%;
+}

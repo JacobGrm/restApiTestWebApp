@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" class="pxm">
+  <head>
+    <title>My App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="../../webcomponentsjs/webcomponents.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+    <link rel="import" href="../../polymer/polymer.html">
+    <link rel="import" href="../px-mobile.html">
+    <link rel="import" href="../px-mobile-theme.html">
+    <script type="text/javascript">console.log('px-mobile starter template')</script>
+    <style>
+      body{
+        position: relative;
+        height: 100vh;
+        width: 100vw;
+      }
+    </style>
+  </head>
+  <body>
+    <pxm-app id="myApp" navbar="myNavbar" view-container="myViews">
+      <pxm-navbar id="myNavbar" title="Title" view-container="myViews">
+        <div class="left">
+          <button onclick="myNavbar.toggleMenu()" class="outline small"><i class="fa fa-lg fa-bars"></i></button>
+        </div>
+        <div class="title">Dashboard</div>
+        <div class="right">
+          <button class="outline small"><i class="fa fa-lg fa-gear"></i></button>
+        </div>
+      </pxm-navbar>
+      <!--Views for app-->
+      <pxm-views id="myViews" navbar="myNavbar" class="background-color-alt">
+        <!--Dashboard -->
+        <pxm-view id="view1" title="View 1" class="padding-10">
+          <div class="grid gutters-sm">
+            <pxm-card title="Recent Issues"></pxm-card>
+          </div>
+          <div class="grid gutters-sm">
+            <pxm-card title="Issue Types">
+              <canvas id="myChart" width="250" height="250"></canvas>
+            </pxm-card>
+            <pxm-card title="Open Issues"></pxm-card>
+          </div>
+        </pxm-view>
+        <!--Details-->
+        <pxm-view id="view2" title="View 2">
+          <div class="masonry-wrapper">
+            <div class="masonry">
+              <div class="item">Item 1</div>
+            </div>
+          </div>
+        </pxm-view>
+        <!--Settings-->
+        <pxm-view id="settingsView" title="Settings" class="padding-10">
+          <form>
+            <input type="text" placeholder="Base URL">
+          </form>
+        </pxm-view>
+      </pxm-views>
+      <!--Toolbar-->
+      <pxm-toolbar id="myToolbar">
+        <div class="padding-10">
+          <div class="btn-group">
+            <button onclick="myViews.prev()" class="block">Prev View</button>
+            <button onclick="myViews.next()" class="block">Next View</button>
+          </div>
+        </div>
+      </pxm-toolbar>
+    </pxm-app>
+  </body>
+</html>

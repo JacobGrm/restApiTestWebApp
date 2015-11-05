@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <script src="../../bower_components/webcomponentsjs/webcomponents.min.js"></script>
+  <script src="../../bower_components/web-component-tester/browser.js"></script>
+  <link rel="import" href="../../bower_components/polymer/polymer.html">
+
+  <link rel="import" href="../../src/elements/elements.html">
+</head>
+<body>
+  <px-navbar id="fixture"><px-navbar>
+<script>
+  suite('<px-navbar>', function() {
+    var element = document.getElementById('fixture');
+    test('renders element', function() {
+      assert.ok(element);
+    });
+    // TODO: More Specs
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">js/simple-router.js | px-mobile API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+<link data-ice="userStyle" rel="stylesheet" href="user/css/0-docs.css">
+</head>
+<body class="layout-container">
+
+<header>
+  <a href="./">Home</a>
+  <a href="identifiers.html">Identifier</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  <a data-ice="repoURL" href="https://github.build.ge.com/PredixComponents/px-mobile.git">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/app.js~App.html">App</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base.js~BaseClass.html">BaseClass</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/collection.js~Collection.html">Collection</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/core.js~Core.html">Core</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/db.js~DB.html">DB</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/dom.js~DOM.html">DOM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/http.js~HTTP.html">HTTP</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/interface.js~Interface.html">Interface</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/log.js~Logger.html">Logger</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/model.js~Model.html">Model</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/page.js~Page.html">Page</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/pages.js~Pages.html">Pages</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/pubsub.js~PubSub.html">PubSub</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/router.js~Router.html">Router</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/router.js~RouterHistory.html">RouterHistory</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/service-locator.js~ServiceLocator.html">ServiceLocator</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/simple-router.js~SimpleRouter.html">SimpleRouter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/view.js~View.html">View</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/views.js~Views.html">Views</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-dom">dom</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-addMixin">addMixin</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-debounce">debounce</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-extend">extend</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-extendClass">extendClass</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-extendDeep">extendDeep</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-mix">mix</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-mixin">mixin</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-resolveURL">resolveURL</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-type">type</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-uuid">uuid</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-$">$</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-Interfaces">Interfaces</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-aggregation">aggregation</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">js/simple-router.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import BaseClass from &apos;./base&apos;;
+// TODO: Experiment
+
+/**
+ * Simple Router Experiment
+ * @example
+ // configuration
+Router.config({ mode: &apos;history&apos;});
+
+// returning the user to the initial state
+Router.navigate();
+
+// adding routes
+Router
+.add(/about/, function() {
+    console.log(&apos;about&apos;);
+})
+.add(/products\/(.*)\/edit\/(.*)/, function() {
+    console.log(&apos;products&apos;, arguments);
+})
+.add(function() {
+    console.log(&apos;default&apos;);
+})
+.check(&apos;/products/12/edit/22&apos;).listen();
+
+// forwarding
+Router.navigate(&apos;/about&apos;);
+ */
+export default class SimpleRouter extends BaseClass {
+
+  /**
+   * This is the Router class constructor
+   * @constructor
+   * @param {String} name - The name of the router
+   * @param {Object} options - The options for the router
+   */
+  constructor(name, options) {
+    name = name + &apos;.Router&apos;;
+    super(name, options);
+
+    this.routes = [];
+
+    this.routeMap = new Map();
+
+    //Could be &apos;hash&apos; or &apos;history&apos; showing if we use the History API or not
+    this.mode = options.hash || &apos;hash&apos;;
+
+    //the root URL path of the application. It is needed only if we use pushState.
+    this.root = options.root || &apos;/&apos;;
+
+    this.urlPrefix = options.urlPrefix || &apos;!#!&apos;;
+
+    this.mixin(options);
+
+    this.config(options);
+
+    return this;
+  }
+
+
+  config(options) {
+    this.mode = options &amp;&amp; options.mode &amp;&amp; options.mode === &apos;history&apos; &amp;&amp; !!(history.pushState) ? &apos;history&apos; : &apos;hash&apos;;
+    this.root = options &amp;&amp; options.root ? &apos;/&apos; + this.clearSlashes(options.root) + &apos;/&apos; : &apos;/&apos;;
+    return this;
+  }
+
+  /**
+   * Remove the slashes from the beginning and from the end of the string.
+   */
+  clearSlashes(path) {
+    return path.toString().replace(/\/$/, &apos;&apos;).replace(/^\//, &apos;&apos;);
+  }
+
+  getFragment() {
+    var fragment = &apos;&apos;;
+    if (this.mode === &apos;history&apos;) {
+      fragment = this.clearSlashes(decodeURI(location.pathname + location.search));
+      fragment = fragment.replace(/\?(.*)$/, &apos;&apos;);
+      fragment = this.root !== &apos;/&apos; ? fragment.replace(this.root, &apos;&apos;) : fragment;
+    } else {
+      var match = window.location.href.match(/#(.*)$/);
+      fragment = match ? match[1] : &apos;&apos;;
+    }
+    return this.clearSlashes(fragment);
+  }
+
+  /**
+   * Handle adding a route to the Router.
+   * @example
+   * //Code
+   * @param {RegExp} re - Regular expression to match route against.
+   * @param {Function} handler - Callback function to invoke when route matches.
+   * @return {SimpleRouter} Returns instance of the router.
+   */
+  add(re, handler) {
+      if (typeof re === &apos;function&apos;) {
+        handler = re;
+        re = &apos;&apos;;
+      }
+      this.routes.push({
+        re: re,
+        handler: handler
+      });
+      return this;
+    }
+    /**
+     * Handle removing a param from the handler
+     * @example
+     * //Code
+     */
+  remove(param) {
+      for (var i = 0, r; i &lt; this.routes.length, r = this.routes[i]; i++) {
+        if (r.handler === param || r.re.toString() === param.toString()) {
+          this.routes.splice(i, 1);
+          return this;
+        }
+      }
+      return this;
+    }
+    /**
+     * Handle flusing all the routes.
+     * @example
+     * //Code
+     */
+  flush() {
+    this.routes = [];
+    this.mode = null;
+    this.root = &apos;/&apos;;
+    return this;
+  }
+
+  /**
+   * Handle invoking a route which triggers the callback handler.
+   * @example
+   * //Code
+   */
+  check(f) {
+    var fragment = f || this.getFragment();
+    for (var i = 0; i &lt; this.routes.length; i++) {
+      var match = fragment.match(this.routes[i].re);
+      if (match) {
+        match.shift();
+        this.routes[i].handler.apply({}, match);
+        return this;
+      }
+    }
+    return this;
+  }
+
+  /**
+   * Handle starting the route which then listens for changes.
+   * @example
+   * //Code
+   */
+  listen() {
+    var self = this;
+    var current = self.getFragment();
+    var fn = function() {
+      if (current !== self.getFragment()) {
+        current = self.getFragment();
+        self.check(current);
+        console.warn(&apos;Checking route&apos;, current);
+      }
+    };
+    clearInterval(this.interval);
+    this.interval = setInterval(fn, 50);
+    return this;
+  }
+
+  /**
+   * Handle changing the current routes location.
+   * @example
+   * //Code
+   */
+  navigate(path) {
+    path = path ? path : &apos;&apos;;
+    if (this.mode === &apos;history&apos;) {
+      history.pushState(null, null, this.root + this.clearSlashes(path));
+    } else {
+      window.location.href.match(/#(.*)$/);
+      window.location.href = window.location.href.replace(/#(.*)$/, &apos;&apos;) + &apos;#&apos; + path;
+    }
+    return this;
+  }
+}
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.3.0)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

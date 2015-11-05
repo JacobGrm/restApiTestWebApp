@@ -1,0 +1,59 @@
+doctype html
+html.pxm(lang='en')
+  head
+    title My App
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    script(src='../../webcomponentsjs/webcomponents.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js')
+    link(rel='import' href='../../polymer/polymer.html')
+    link(rel='import' href='../px-mobile.html')
+    link(rel='import' href='../px-mobile-theme.html')
+    script(type='text/javascript').
+      console.log('px-mobile starter template')
+    style.
+      body{
+        position: relative;
+        height: 100vh;
+        width: 100vw;
+      }
+  body
+    pxm-app#myApp(navbar='myNavbar', view-container='myViews' )
+      pxm-navbar#myNavbar(title='Title', view-container='myViews')
+        .left
+          button(onclick='myNavbar.toggleMenu()').outline.small
+            i.fa.fa-lg.fa-bars
+        .title Dashboard
+        .right
+          button.outline.small
+            i.fa.fa-lg.fa-gear
+      
+      //Views for app
+      pxm-views.background-color-alt(id='myViews', navbar='myNavbar')
+        
+        //Dashboard 
+        pxm-view.padding-10(id='view1', title='View 1')
+          .grid.gutters-sm
+            pxm-card(title='Recent Issues')
+          .grid.gutters-sm
+            pxm-card(title='Issue Types')
+              canvas#myChart(width="250", height="250")
+            pxm-card(title='Open Issues')
+        
+        //Details
+        pxm-view(id='view2', title='View 2')
+          .masonry-wrapper
+            .masonry
+              .item Item 1
+          
+        //Settings
+        pxm-view#settingsView.padding-10(title='Settings')
+          form
+            input(type='text', placeholder='Base URL')
+          
+      //Toolbar
+      pxm-toolbar#myToolbar
+        .padding-10
+          .btn-group
+            button.block(onclick='myViews.prev()') Prev View
+            button.block(onclick='myViews.next()') Next View
+      

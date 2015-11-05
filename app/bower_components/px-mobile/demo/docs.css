@@ -1,0 +1,125 @@
+@media screen and (min-width: 768px){
+  .docs-subtitle {
+      margin-bottom: 30px;
+      font-size: 41px;
+      line-height: 60px;
+  }
+
+}
+
+
+.docs-subtitle {
+    max-width: 750px;
+    margin: 0 auto 20px;
+    font-size: 28px;
+    font-weight: 300;
+    line-height: 38px;
+    color: #fff;
+}
+
+.docs-header, .docs-sub-header {
+    position: relative;
+    background-color: #0a1855;
+    background-image: -webkit-gradient(linear,left bottom,right top,color-stop(0%,#0a1855),color-stop(100%,#357ECE));
+    background-image: -webkit-linear-gradient(45deg,#0a1855 0,#357ECE 100%);
+    background-image: -moz-linear-gradient(45deg,#0a1855 0,#357ECE 100%);
+    background-image: -ms-linear-gradient(45deg,#0a1855 0,#357ECE 100%);
+    background-image: -o-linear-gradient(45deg,#0a1855 0,#357ECE 100%);
+    background-image: linear-gradient(45deg,#0a1855 0,#357ECE 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0a1855', endColorstr='#357ECE', GradientType=1);
+}
+
+@media screen and (min-width: 768px){
+
+
+}
+.docs-sub-content {
+    position: relative;
+    padding: 55px 15px 65px;
+    overflow: hidden;
+    color: #fff;
+    text-align: center;
+}
+
+.layout-container > header {
+  background-image: url('../../../src/images/icon.svg');
+
+  background-position: 15px 8px;
+  display: block;
+  /* height: 25px; */
+  padding-left: 45px;
+  background-repeat: no-repeat;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  display: block;
+  /* padding-top: 10px; */
+  border-bottom-color: #111;
+  background-size: 25px;
+}
+.layout-container {
+
+}
+.navigation{
+  position: absolute;
+  top:auto;
+}
+
+.cheatsheet .demo {
+  position: relative;
+ }
+ #side-nav {
+   max-height: 100vh;
+   overflow-y: auto;
+   padding-bottom: 150px;
+ }
+
+
+ .half-hr {
+   width: 50%;
+   height: 2px;
+   border: 0;
+   background: #ffd2bc;
+   margin: 10px auto 50px auto;
+   outline: 0;
+ }
+ .smooth-font {
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
+ }
+ .jl-pd_mgtwp {
+ margin-top: 20px;
+ }
+
+
+
+
+
+.demo .btn,
+.demo button{
+  margin-right: 5px;
+  margin-bottom: 10px;
+}
+
+
+
+
+
+px-page:before{
+  content: 'px-page';
+}
+px-view:before{
+  content: 'px-view';
+}
+
+px-page:before, px-view:before {
+ color: #ccc;
+ font-style: italic;
+ position: absolute;
+ right: 5px;
+ top: 0;
+ font-size: .9em;
+}
+px-page, px-view {
+  border: 4px solid #ccc;
+  padding: 10px;
+}

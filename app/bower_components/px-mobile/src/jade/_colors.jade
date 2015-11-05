@@ -1,0 +1,64 @@
+mixin bg(name)
+  //- attributes == {class: "btn"}
+  li.background-color(class=name)
+    span=name
+
+.page-header
+  h2 Color Pallete
+  //p From neutrals to brights, each hue is chosen to fit into the overall visual language and promote a contemporary and vibrant user experience.
+  p The GE color palette represents an approachable and optimistic visual language. Because color is a strong part of its visual equity, Px incorporates these colors to help shape a welcoming, true-to-GE user experience.
+
+.container.full-width.gutters
+  .col-12
+    .page-header
+      h3 App Brand Colors
+    ul.grid-container.background-colors
+      each val in [ 'primary-color', 'chrome-color', 'default-color', 'positive-color', 'negative-color', 'color-alt', 'color-dark', 'color-light']
+        +bg(val)
+    
+    .page-header
+      h3 GE Brand Colors Regular
+    ul.grid-container.background-colors
+      each val in [ 'gray', 'blue', 'orange', 'green', 'pink', 'brown', 'purple', 'yellow', 'red']
+        +bg(val)
+
+    .page-header
+      h3 GE Brand Colors Light
+    ul.grid-container.background-colors
+      each val in [ 'gray-light', 'blue-light', 'orange-light', 'green-light', 'pink-light', 'brown-light', 'purple-light', 'yellow-light', 'red-light']
+        +bg(val)
+    
+    .page-header
+      h3 GE Brand Colors Dark
+    ul.grid-container.background-colors
+      each val in ['gray-dark', 'blue-dark', 'orange-dark', 'green-dark', 'pink-dark', 'brown-dark', 'purple-dark', 'yellow-dark', 'red-dark']
+        +bg(val)
+
+    .page-header
+      h3 Monochromatic
+    ul.grid-container.background-colors
+      each val in ['black', 'gray10', 'gray9', 'gray8', 'gray7', 'gray6', 'gray5', 'gray4', 'gray3', 'gray2', 'gray1', 'white']
+        +bg(val)
+        
+    .page-header
+      h3 Primary and Selection
+    ul.grid-container.background-colors
+      each val in ['primary', 'primary-hover', 'primary-pressed', 'select-default', 'select-hover', 'select-pressed']
+        +bg(val)
+        
+    .page-header
+      h3 Data Visualization Regular
+    ul.grid-container.background-colors
+      each val in ['dv-gray', 'dv-blue', 'dv-orange', 'dv-green', 'dv-pink', 'dv-brown', 'dv-purple', 'dv-yellow', 'dv-red']
+        +bg(val)
+    
+    .page-header
+      h3 Data Visualization Light
+    ul.grid-container.background-colors
+      each val in ['dv-light-gray', 'dv-light-blue', 'dv-light-orange', 'dv-light-green', 'dv-light-pink', 'dv-light-brown', 'dv-light-purple', 'dv-light-yellow', 'dv-light-red']
+        +bg(val)
+    .page-header
+      h3 Data Visualization Dark
+    ul.grid-container.background-colors
+      each val in ['dv-dark-gray', 'dv-dark-blue', 'dv-dark-orange', 'dv-dark-green', 'dv-dark-pink', 'dv-dark-brown', 'dv-dark-purple', 'dv-dark-yellow', 'dv-dark-red']
+        +bg(val)

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">js/model.js | px-mobile API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+<link data-ice="userStyle" rel="stylesheet" href="user/css/0-docs.css">
+</head>
+<body class="layout-container">
+
+<header>
+  <a href="./">Home</a>
+  <a href="identifiers.html">Identifier</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  <a data-ice="repoURL" href="https://github.build.ge.com/PredixComponents/px-mobile.git">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/app.js~App.html">App</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base.js~BaseClass.html">BaseClass</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/collection.js~Collection.html">Collection</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/core.js~Core.html">Core</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/db.js~DB.html">DB</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/dom.js~DOM.html">DOM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/http.js~HTTP.html">HTTP</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/interface.js~Interface.html">Interface</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/log.js~Logger.html">Logger</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/model.js~Model.html">Model</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/page.js~Page.html">Page</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/pages.js~Pages.html">Pages</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/pubsub.js~PubSub.html">PubSub</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/router.js~Router.html">Router</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/router.js~RouterHistory.html">RouterHistory</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/service-locator.js~ServiceLocator.html">ServiceLocator</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/simple-router.js~SimpleRouter.html">SimpleRouter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/view.js~View.html">View</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/views.js~Views.html">Views</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-dom">dom</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-addMixin">addMixin</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-debounce">debounce</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-extend">extend</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-extendClass">extendClass</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-extendDeep">extendDeep</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-mix">mix</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-mixin">mixin</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-resolveURL">resolveURL</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-type">type</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-uuid">uuid</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-$">$</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-Interfaces">Interfaces</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-aggregation">aggregation</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">js/model.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
+
+import BaseClass from &apos;./base&apos;;
+import HTTP from &apos;./HTTP&apos;;
+import * as utils from &apos;./utils&apos;;
+import Logger from &apos;./log&apos;;
+
+/**
+ * Model class provides event dispatching.
+ * @example
+ * var model = new Model();
+ * @param {String} id - The id of the model.
+ * @param {Object} options - Options for the model
+ */
+export default class Model extends BaseClass {
+
+  constructor(id, options) {
+    id = id || utils.uuid();
+    options = options || {};
+
+    super(id, options);
+
+    this.uuid = utils.uuid();
+    this.id = id;
+    this.baseUrl = options.baseUrl || &apos;/default&apos;;
+    this.defaults = options.defaults || {};
+    this.idField = options.idField || &apos;_id&apos;;
+    this.data = options.data || {};
+    this.data[this.idField] = id;
+    // TODO: Adpater can be http or db
+    this.adapter = options.adapter || HTTP;
+    this.adapter = new this.adapter(id, options);
+
+
+
+    this.log = new Logger(id, {
+      colors: {
+        debug: &apos;color:blue&apos;
+      }
+    });
+    this.log.logApi(&apos;constructor&apos;, options);
+  }
+
+  url() {
+    var url = `/${encodeURIComponent(this.get(this.idField))}`;
+    var rev = this.get(&apos;_rev&apos;);
+    if (rev) {
+      url += &apos;?rev=&apos; + _rev;
+    }
+    return url;
+  }
+
+  has(attribute) {
+    this.log.logApi(&apos;has&apos;, attribute);
+    return this.data.hasOwnProperty(attribute);
+  }
+
+  get(attribute) {
+    this.log.logApi(&apos;has&apos;, attribute);
+    return this.data[attribute];
+  }
+
+  set(attributes, force = true) {
+    for (var key in attributes) {
+      if (force) {
+        this.data[key] = attributes[key];
+      }
+      if (this.has(key)) {
+        this.data[key] = attributes[key];
+      }
+    }
+    return this;
+  }
+
+  toJSON() {
+    console.warn(&apos;toJSON&apos;, this.data);
+    return JSON.stringify(this.data);
+  }
+
+  clone() {
+    return new this.constructor(this.options);
+  }
+
+  parse(resp) {
+    console.warn(&apos;parse&apos;, resp);
+    if (resp.ok &amp;&amp; resp.data._id) {
+      this.utils.extend(this.data, resp.data);
+    }
+    return resp;
+  }
+
+  fetch(options) {
+    console.warn(&apos;fetch&apos;, options);
+    return this.adapter.get(this.url()).then(this.parse);
+  }
+
+  save(options) {
+    console.warn(&apos;save&apos;, options);
+    return this.adapter.put(`${this.url()}`, this.data).then(this.parse);
+  }
+
+  destroy(options) {
+    console.warn(&apos;destroy&apos;, this.data._rev);
+    return this.adapter.delete(`${this.url()}`).then(this.parse);
+  }
+
+  sync(options) {
+    console.warn(&apos;sync&apos;, options);
+  }
+
+  static extend(obj) {
+    return super.extend(this, obj);
+  }
+}
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.3.0)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

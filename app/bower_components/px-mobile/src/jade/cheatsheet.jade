@@ -1,0 +1,157 @@
+extends ./layout
+block title
+  title px-mobile | Cheatsheet
+block content 
+  article.cheatsheet
+    .container.full-width
+      .col-3
+        .box
+          legend Colors
+          ul#colors.no-padding.no-margin
+            li.color-red .color-red
+            li.color-blue .color-blue
+            li.color-white.background-color-dark .color-white
+            li.color-green .color-green
+            li.color-auto .color-auto
+            li.color-yellow .color-yellow
+            li.color-primary .color-primary
+            li.color-alt .color-alt
+            li.color-light .color-light
+            li.color-dark .color-dark
+        .box
+          legend Cursors
+          ul#cursors
+            li.cursor-auto .cursor-auto
+            li.cursor-default .cursor-default
+            li.cursor-none .cursor-none
+            li.cursor-not-allowed .cursor-not-allowed
+            li.cursor-pointer .cursor-pointer
+        .box
+          legend Text
+          ul#text
+            li.text-left .text-left
+            li.text-left .text-right
+            li.text-left .text-center
+            li.text-left .text-justify
+            li .[xs|sm|md|lg]-text-[option]
+        .box
+          legend Layout
+      .col-6
+        .text-center.mast-head.padding-10
+          h1.no-margin px-mobile
+          p
+            | The px-mobile library provides various classes and web components that are used in mobile hybrid/web
+            | applications.
+        .container
+          .col-6
+            .box
+              legend Usage
+          .col-6
+            .box
+              legend Typography
+          .col-12
+            .box
+              legend Grid
+              .padded
+                .demo
+                  section.container.gutters-sm-all
+                    // TODO: col 1 x 12
+                    .col-1
+                    .col-1
+                    .col-1
+                    .col-1
+                    .col-1
+                    .col-1
+                    .col-1
+                    .col-1
+                    .col-1
+                    .col-1
+                    .col-1
+                    .col-1
+                    // TODO: col 2 x 6
+                    .col-2
+                    .col-2
+                    .col-2
+                    .col-2
+                    .col-2
+                    .col-2
+                    // TODO: col 3 x 4
+                    .col-3
+                    .col-3
+                    .col-3
+                    .col-3
+                    // TODO: col 4 x 3
+                    .col-4
+                    .col-4
+                    .col-4
+                    // TODO: col 6 x 2
+                    .col-6
+                    .col-6
+                    // TODO: col 12 x 1
+                    .col-12
+                    .col-3
+                    .col-9
+          .col-12
+            .box
+              legend Grid Classes
+      .col-3
+        .box
+          legend Transform
+          ul#transform
+            li .opacity-[0|25|50|75|100]
+            li .scale-[0|50|100|105]
+        .box
+          legend Hover
+          ul#hover
+            li .hover-color-[option]
+            li .hover-background-color-[option]
+            li .hover-background-color-[lighter|darker]
+            li .hover-opacity-[0|25|50|75|100] to mo
+            li .hover-scale-[0|50|100|105]
+            li .hover-btn-outline
+            li .hover-btn-outline-reverse
+        .box
+          legend Transitions
+          ul#transition
+            li .transition-[all|background|color|opacity|transform]
+            li .transition-[linear|ease|ease-in|ease-out|ease-in-out]
+            li .transition-[normal|fast|slow|slow-2x|slow-4x]
+        .box
+          legend Accessibility
+    .container
+      .col-6
+        .box
+          legend Alerts
+          .alert  This is a unstyled alert.
+          .alert.alert-yellow  This is a yellow alert.
+          .alert.alert-green.alert-sm  This is a small green alert.
+          .alert.alert-plain  This is a plain alert.
+          .alert.alert-red.alert-lg  This is a large red alert.
+          .alert.alert-blue
+            | This is a blue alert with an exit button.
+            a.alert-exit.cursor-pointer ×
+      .col-6
+        .box
+          legend Buttons
+      .col-6
+        .box
+          legend Forms
+      .col-6
+        .box
+          legend Cards
+          .card.radius
+            .card-content.card-header
+              h3 .card-head
+              p.color-light
+                | A container with classes
+                samp .card-content
+                |  and
+                samp .card-header
+            .card-content
+              p.no-margin.text-left
+                | Using
+                samp .card-header
+                |  adds a thin border on the bottom of the
+                |               header section. It also spaces your heading tags and paragraph tags nicely for titles and subtitles.
+            .card-content.card-footer
+              a.btn.btn-outline.color-green.no-t-d.radius.cursor-pointer.hover-color-blue.transition-fast Join

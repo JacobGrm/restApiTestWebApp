@@ -1,0 +1,33 @@
+<html>
+<head>
+  <!-- TODO: dependencies -->
+  <script src="../../../../webcomponentsjs/webcomponents-lite.js"></script>
+  <link rel="import" href="../../../../polymer/polymer.html">
+  <link rel="import" href="../../../../iron-component-page/iron-component-page.html">
+  <!-- TODO: pxm components -->
+  <link rel="import" href="../../../px-mobile.html">
+  <link rel="import" href="../../../px-mobile-theme.html">
+
+
+
+  <title>px-app</title>
+</head>
+<body>
+
+<!-- TODO: docs -->
+<iron-component-page id="px-docs" src="pxm-app.html" view="docs"></iron-component-page>
+
+<script type="text/javascript">
+  function changeView(e){
+    var currentView = location.hash.replace('#/', '');
+    if(!currentView){
+      currentView = 'docs';
+    }
+    console.log('Change view to', currentView);
+    document.getElementById('px-docs').view = currentView;
+  }
+  window.addEventListener('hashchange', changeView);
+  changeView();
+</script>
+</body>
+</html>

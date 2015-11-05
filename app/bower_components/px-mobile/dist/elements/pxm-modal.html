@@ -1,0 +1,204 @@
+<dom-module id="pxm-modal">
+	<style>
+	:host {
+		display:block;
+		-webkit-transition: max-height .5s;
+		transition: max-height .5s;
+	}
+
+	:host .dialog {
+		overflow: hidden;
+		position:relative;
+		-webkit-transition: all 0.5s ease-out;
+		transition: all 0.5s ease-out;
+	}
+
+		:host .dialog .dialog-content{
+			overflow: hidden;
+			background:rgba(0, 0, 0, 0.8);
+			color:#FFF;
+			padding:10px;
+			-webkit-transition: all 0.5s;
+			transition: all 0.5s;
+			-webkit-transform: translate(0, 10%);
+			transform: translate(0, 10%);
+		}
+
+		:host .dialog.closed .dialog-content{
+
+
+			-webkit-transition: all 0.5s;
+			transition: all 0.5s;
+			-webkit-transform: translate(0, 100%);
+			transform: translate(0, 100%);
+		}
+		:host .dialog:not(.closed) .dialog-content{
+
+		}
+
+	:host .dialog a:hover,
+	:host .dialog button:hover {
+		text-decoration:none;
+		color:#FFF;
+	}
+
+	:host .dialog header {
+		display:block;
+		position:relative;
+		border-bottom:1px solid #ccc;
+		margin-bottom:15px;
+		color:#fff;
+		padding:5px;
+	}
+
+	:host .dialog header .icon {
+		background-color:#3693F8;
+		border-radius:20px;
+		display:inline-block;
+		padding:5px;
+	}
+
+	:host .dialog header span {
+		display:inline-block;
+		font-size:2rem;
+		font-weight:400;
+		margin:0;
+		padding:0;
+	}
+
+	:host .dialog header .fr {
+		position:absolute;
+		right:0;
+		top: 0;
+	}
+	:host .dialog header .fl {
+		position:absolute;
+		left:0;
+
+	}
+
+	:host .dialog section .btns {
+		display:flex;
+		padding:5px 0;
+	}
+	:host .dialog section .btns em-button{
+		width: 100%;
+	}
+	:host .dialog section .btns em-button:first-child{
+		margin-right: 10px;
+	}
+
+	:host .dialog footer {
+		text-align:center;
+		background-color:#555;
+		position:absolute;
+		bottom:0;
+		left:0;
+		right:0;
+		height:50px;
+		padding:5px 0;
+	}
+
+	:host .dialog footer .dialog-circle {
+		background-color:#555;
+		display: block;
+		height: 81px;
+		width: 80px;
+		position: absolute;
+
+		border-radius: 50%;
+		top: -44px;
+		left: 40%;
+		z-index: 0;
+		padding-top: 6px
+	}
+
+	:host .close-btn{
+		cursor: pointer;
+		background: none;
+		border: none;
+	}
+
+
+
+	</style>
+	<template>
+			<article id="dialog" class="modal">
+				<div class="modal-content">
+					<header>
+						<div class="container">
+							<div class="col-1" hidden="{{!iconLeft}}">
+								<i class$="{{iconLeft}}"></i>
+							</div>
+							<div class="col-10">
+								<span>{{title}}</span>
+							</div>
+							<div class="col-1">
+						<a class="close-btn" on-click="toggleDialog"><i class="fa fa-icon fa-close fa-lg"></i></a>
+							</div>
+						</div>
+					</header>
+					<section class="modal-body">
+						<content></content>
+					</section>
+				</div>
+			</article>
+	</template>
+
+	<!-- Logic -->
+	<script>
+		Polymer({
+			is: 'pxm-modal',
+			properties: {
+				title: {
+					type: String,
+					value: 'Dialog Title'
+				},
+				color: {
+					type: String,
+					value: 'bare'
+				},
+				iconLeft: {
+					type: String
+				},
+				iconRight: {
+					type: String
+				},
+				open: {
+					type: Boolean
+				}
+			},
+			created: function () {
+				var logger = new px.mobile.Logger(this.tagName, {colors: {debug: 'color:orange'}});
+      	px.mobile.utils.addMixin(logger, this);
+      	this.logApi('created', this.id);
+
+			},
+			toggleDialog: function(){
+				var openIcon = 'fa fa-2x fa-check-circle';
+				var closeIcon = 'fa fa-2x fa-times-circle';
+				this.$.dialog.toggleClass('closed', this.$.dialog.hasClass('closed'));
+			//	this.$.dialog.toggleClass('opened', !this.$.dialog.hasClass('opened'));
+				this.$.dialogBtn.icon = (this.$.dialog.hasClass('closed') ? openIcon : closeIcon);
+			},
+			open: function(){
+
+				this.$.dialog.removeClass('closed');
+			},
+			close: function(){
+
+				this.$.dialog.addClass('closed');
+			},
+			toggle: function(){
+				if(this.open){
+					this.close();
+				} else {
+					this.open();
+				}
+			}
+
+
+
+		});
+	</script>
+</dom-module>

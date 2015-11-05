@@ -1,0 +1,150 @@
+
+<script src="desktop-notify.js"></script>
+<!--
+## Usage
+To use this component in your custom component do the following:
+```
+<dom-module id="demo-view">
+  <template>
+  </template>
+</dom-module>
+<script>
+  Polymer({
+    is: 'demo-view'
+  });
+</script>
+```
+@element component.html
+@blurb px-notifications Element description
+@demo demo.html
+@homepage index.html
+-->
+<dom-module id="pxm-notifications">
+  <!-- TODO: Style for px-notifications -->
+  <style>
+    :host {
+      display: block;
+    }
+  </style>
+  <template>
+
+    <section>
+      <p>{{message}}</p>
+      <button class="btn btn-inverse btn-lg btn-block" on-click="requestPermission">Enable Notifications</button>
+      <button class=" btn-lg btn-block btn-primary" type="button" on-click="showNotification">Display Notification</button>
+    </section>
+  </template>
+  <script>
+
+  var win = window, statusClass = {}, isIE = false;
+
+
+  statusClass[notify.PERMISSION_DEFAULT] = 'alert';
+  statusClass[notify.PERMISSION_GRANTED] = 'alert alert-success';
+  statusClass[notify.PERMISSION_DENIED] = 'alert alert-error';
+
+
+
+
+
+    Polymer({
+      is: 'pxm-notifications',
+      properties:{
+        title: {
+          type: String,
+          value: 'px notifications'
+        },
+        message: {
+          type: String,
+          value: 'px notifications',
+          reflectToAttribute: true
+        },
+        status: {
+          type: String,
+          value: 'px notifications',
+          reflectToAttribute: true
+        },
+        permissionLevel: {
+          type: String,
+          value: 'default',
+          reflectToAttribute: true
+        },
+        permissionsGranted: {
+          type: String,
+          reflectToAttribute: true
+        },
+        isSupported: {
+          type: Boolean,
+          value: false
+        },
+        notification: {
+          type: Object,
+          value: {
+            title: 'Sample Notification',
+            body: 'This is the body of a desktop notification!',
+            icon: 'http://placehold.it/100'
+          }
+        },
+        messages: {
+          type: Object,
+          value: {
+            'default': 'Click to allow displaying desktop notifications.',
+            'granted': 'Desktop notifications enabled.',
+            'notPinned': 'Pin current page in the taskbar in order to receive notifications',
+		        'notSupported': 'Desktop Notifications not supported! Check supported browsers table and projects GitHub page.'
+          }
+        }
+      },
+      created: function(){
+        console.warn('INFO', this.tagName, 'created');
+
+
+      },
+      ready: function(){
+        console.warn('INFO', this.tagName, 'ready');
+      },
+      attached: function(){
+        console.warn('INFO', this.tagName, 'attached');
+        this.isSupported = notify.isSupported;
+        this.permissionLevel = notify.permissionLevel();
+        this.permissionsGranted = (this.permissionLevel === notify.PERMISSION_GRANTED);
+
+        try {
+          isIE = (win.external && win.external.msIsSiteMode() !== undefined);
+        } catch (e) {}
+
+
+        this.messages[notify.PERMISSION_DENIED] = 'Desktop notifications disabled.';
+
+        this.status = this.isSupported ? statusClass[this.permissionLevel] : statusClass[notify.PERMISSION_DENIED];
+        this.message = this.isSupported ? (isIE ?  this.messages.notPinned :  this.messages[this.permissionLevel]) : this.messages.notSupported;
+
+      },
+      //Handle requesting permissions to enable desktop notifications.
+      requestPermission: function() {
+        var _this = this;
+        console.warn('INFO', 'requestPermission');
+      	if (this.permissionLevel === notify.PERMISSION_DEFAULT) {
+      		notify.requestPermission(function() {
+      			_this.permissionLevel = notify.permissionLevel()
+      			_this.permissionsGranted = notify.PERMISSION_GRANTED
+      		});
+      	}
+      },
+
+      //Handle displaying a desktop notification.
+      showNotification:function() {
+        var options = {};
+        options.icon = this.notification.icon;
+        options.body = this.notification.body;
+
+        console.warn('INFO', 'showNotification', options);
+      	notify.createNotification(this.notification.title, options);
+      }
+
+    });
+
+
+
+  </script>
+</dom-module>

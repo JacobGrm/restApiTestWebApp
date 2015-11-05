@@ -1,0 +1,610 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "ExpressionStatement",
+      "expression": {
+        "type": "Literal",
+        "value": "use strict",
+        "raw": "'use strict'",
+        "range": [
+          0,
+          12
+        ],
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 1,
+            "column": 12
+          }
+        }
+      },
+      "range": [
+        0,
+        13
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 13
+        }
+      }
+    },
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "PubSub",
+            "range": [
+              21,
+              27
+            ],
+            "loc": {
+              "start": {
+                "line": 2,
+                "column": 7
+              },
+              "end": {
+                "line": 2,
+                "column": 13
+              }
+            }
+          },
+          "range": [
+            21,
+            27
+          ],
+          "loc": {
+            "start": {
+              "line": 2,
+              "column": 7
+            },
+            "end": {
+              "line": 2,
+              "column": 13
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "./pubsub",
+        "raw": "'./pubsub'",
+        "range": [
+          33,
+          43
+        ],
+        "loc": {
+          "start": {
+            "line": 2,
+            "column": 19
+          },
+          "end": {
+            "line": 2,
+            "column": 29
+          }
+        }
+      },
+      "range": [
+        14,
+        44
+      ],
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 0
+        },
+        "end": {
+          "line": 2,
+          "column": 30
+        }
+      }
+    },
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "local": {
+            "type": "Identifier",
+            "name": "BaseClass",
+            "range": [
+              52,
+              61
+            ],
+            "loc": {
+              "start": {
+                "line": 3,
+                "column": 7
+              },
+              "end": {
+                "line": 3,
+                "column": 16
+              }
+            }
+          },
+          "range": [
+            52,
+            61
+          ],
+          "loc": {
+            "start": {
+              "line": 3,
+              "column": 7
+            },
+            "end": {
+              "line": 3,
+              "column": 16
+            }
+          }
+        }
+      ],
+      "source": {
+        "type": "Literal",
+        "value": "./base",
+        "raw": "'./base'",
+        "range": [
+          67,
+          75
+        ],
+        "loc": {
+          "start": {
+            "line": 3,
+            "column": 22
+          },
+          "end": {
+            "line": 3,
+            "column": 30
+          }
+        }
+      },
+      "range": [
+        45,
+        76
+      ],
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 0
+        },
+        "end": {
+          "line": 3,
+          "column": 31
+        }
+      },
+      "trailingComments": [
+        {
+          "type": "Block",
+          "value": "*\n * @description Pages class has methods for managing a collection of pages.\n ",
+          "range": [
+            78,
+            161
+          ],
+          "loc": {
+            "start": {
+              "line": 5,
+              "column": 0
+            },
+            "end": {
+              "line": 7,
+              "column": 3
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "ExportDefaultDeclaration",
+      "declaration": {
+        "type": "ClassDeclaration",
+        "id": {
+          "type": "Identifier",
+          "name": "Pages",
+          "range": [
+            183,
+            188
+          ],
+          "loc": {
+            "start": {
+              "line": 8,
+              "column": 21
+            },
+            "end": {
+              "line": 8,
+              "column": 26
+            }
+          }
+        },
+        "superClass": {
+          "type": "Identifier",
+          "name": "BaseClass",
+          "range": [
+            197,
+            206
+          ],
+          "loc": {
+            "start": {
+              "line": 8,
+              "column": 35
+            },
+            "end": {
+              "line": 8,
+              "column": 44
+            }
+          }
+        },
+        "body": {
+          "type": "ClassBody",
+          "body": [
+            {
+              "type": "MethodDefinition",
+              "key": {
+                "type": "Identifier",
+                "name": "constructor",
+                "range": [
+                  211,
+                  222
+                ],
+                "loc": {
+                  "start": {
+                    "line": 9,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 9,
+                    "column": 13
+                  }
+                }
+              },
+              "value": {
+                "type": "FunctionExpression",
+                "id": null,
+                "params": [
+                  {
+                    "type": "Identifier",
+                    "name": "name",
+                    "range": [
+                      223,
+                      227
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 9,
+                        "column": 14
+                      },
+                      "end": {
+                        "line": 9,
+                        "column": 18
+                      }
+                    }
+                  },
+                  {
+                    "type": "Identifier",
+                    "name": "options",
+                    "range": [
+                      229,
+                      236
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 9,
+                        "column": 20
+                      },
+                      "end": {
+                        "line": 9,
+                        "column": 27
+                      }
+                    }
+                  }
+                ],
+                "body": {
+                  "type": "BlockStatement",
+                  "body": [
+                    {
+                      "type": "ExpressionStatement",
+                      "expression": {
+                        "type": "CallExpression",
+                        "callee": {
+                          "type": "Super",
+                          "range": [
+                            244,
+                            249
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 10,
+                              "column": 4
+                            },
+                            "end": {
+                              "line": 10,
+                              "column": 9
+                            }
+                          }
+                        },
+                        "arguments": [
+                          {
+                            "type": "Identifier",
+                            "name": "name",
+                            "range": [
+                              250,
+                              254
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 10,
+                                "column": 10
+                              },
+                              "end": {
+                                "line": 10,
+                                "column": 14
+                              }
+                            }
+                          },
+                          {
+                            "type": "Identifier",
+                            "name": "options",
+                            "range": [
+                              256,
+                              263
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 10,
+                                "column": 16
+                              },
+                              "end": {
+                                "line": 10,
+                                "column": 23
+                              }
+                            }
+                          }
+                        ],
+                        "range": [
+                          244,
+                          264
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 10,
+                            "column": 4
+                          },
+                          "end": {
+                            "line": 10,
+                            "column": 24
+                          }
+                        }
+                      },
+                      "range": [
+                        244,
+                        265
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 10,
+                          "column": 4
+                        },
+                        "end": {
+                          "line": 10,
+                          "column": 25
+                        }
+                      }
+                    },
+                    {
+                      "type": "ReturnStatement",
+                      "argument": {
+                        "type": "ThisExpression",
+                        "range": [
+                          277,
+                          281
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 11,
+                            "column": 11
+                          },
+                          "end": {
+                            "line": 11,
+                            "column": 15
+                          }
+                        }
+                      },
+                      "range": [
+                        270,
+                        282
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 11,
+                          "column": 4
+                        },
+                        "end": {
+                          "line": 11,
+                          "column": 16
+                        }
+                      }
+                    }
+                  ],
+                  "range": [
+                    238,
+                    286
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 9,
+                      "column": 29
+                    },
+                    "end": {
+                      "line": 12,
+                      "column": 3
+                    }
+                  }
+                },
+                "generator": false,
+                "expression": false,
+                "range": [
+                  222,
+                  286
+                ],
+                "loc": {
+                  "start": {
+                    "line": 9,
+                    "column": 13
+                  },
+                  "end": {
+                    "line": 12,
+                    "column": 3
+                  }
+                }
+              },
+              "kind": "constructor",
+              "computed": false,
+              "range": [
+                211,
+                286
+              ],
+              "loc": {
+                "start": {
+                  "line": 9,
+                  "column": 2
+                },
+                "end": {
+                  "line": 12,
+                  "column": 3
+                }
+              },
+              "static": false
+            }
+          ],
+          "range": [
+            207,
+            288
+          ],
+          "loc": {
+            "start": {
+              "line": 8,
+              "column": 45
+            },
+            "end": {
+              "line": 13,
+              "column": 1
+            }
+          }
+        },
+        "range": [
+          177,
+          288
+        ],
+        "loc": {
+          "start": {
+            "line": 8,
+            "column": 15
+          },
+          "end": {
+            "line": 13,
+            "column": 1
+          }
+        },
+        "leadingComments": [
+          {
+            "type": "Block",
+            "value": "*\n * @description Pages class has methods for managing a collection of pages.\n ",
+            "range": [
+              78,
+              161
+            ],
+            "loc": {
+              "start": {
+                "line": 5,
+                "column": 0
+              },
+              "end": {
+                "line": 7,
+                "column": 3
+              }
+            }
+          }
+        ],
+        "trailingComments": []
+      },
+      "range": [
+        162,
+        288
+      ],
+      "loc": {
+        "start": {
+          "line": 8,
+          "column": 0
+        },
+        "end": {
+          "line": 13,
+          "column": 1
+        }
+      },
+      "leadingComments": [
+        {
+          "type": "Block",
+          "value": "*\n * @description Pages class has methods for managing a collection of pages.\n ",
+          "range": [
+            78,
+            161
+          ],
+          "loc": {
+            "start": {
+              "line": 5,
+              "column": 0
+            },
+            "end": {
+              "line": 7,
+              "column": 3
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "sourceType": "module",
+  "range": [
+    0,
+    288
+  ],
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 13,
+      "column": 1
+    }
+  },
+  "comments": [
+    {
+      "type": "Block",
+      "value": "*\n * @description Pages class has methods for managing a collection of pages.\n ",
+      "range": [
+        78,
+        161
+      ],
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 0
+        },
+        "end": {
+          "line": 7,
+          "column": 3
+        }
+      }
+    }
+  ]
+}

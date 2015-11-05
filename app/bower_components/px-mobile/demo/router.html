@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>px-router</title>
+
+		<!-- TODO: Testing -->
+		<link rel="stylesheet" href="/jasmine/lib/jasmine-core/jasmine.css"/>
+
+		<script src="/jasmine/lib/jasmine-core/json2.js"></script>
+		<script src="/jasmine/lib/jasmine-core/jasmine.js"></script>
+		<script src="/jasmine/lib/jasmine-core/jasmine-html.js"></script>
+		<script src="/jasmine/lib/jasmine-core/boot.js"></script>
+
+		<!-- TODO: Dependencies -->
+		<script src="/webcomponentsjs/webcomponents-lite.min.js"></script>
+
+		<!-- TODO: Main-->
+		<link rel="import" href="../px-mobile.html">
+		<style media="screen">
+		body{
+			padding: 25px;
+		}
+		px-view{
+			background-color: crimson;
+		}
+		</style>
+	</head>
+	<body>
+
+		<h1>px-router</h1>
+		<a href="#/view1">View1</a>
+		<a href="#/view2">View2</a>
+		<a href="#/view3">View3</a>
+
+		<px-router id="viewRouter"></px-router>
+		<px-views id="myViews" router-id="viewRouter" auto-router selected="0">
+			<px-view id="view1" route="#/view1/">
+				<h2>View 1</h2>
+			</px-view>
+			<px-view id="view2" route="/view2/">
+				<h2>View 2</h2>
+			</px-view>
+			<px-view id="view3" route="/view3/">
+				<h2>View 3</h2>
+			</px-view>
+		</px-views>
+
+
+		<px-card header-text="Test"></px-card>
+
+		<script src="../test/specs/router-spec.js" ></script>
+		<!-- TODO: Specs
+
+		<script src="test/blanket.min.js"></script>
+		<script src="test/jasmine-blanket.js"></script>
+		-->
+		<div id="sandbox">
+
+		</div>
+
+		<div id="HTMLReporter" class="jasmine_reporter"></div>
+	</body>
+</html>

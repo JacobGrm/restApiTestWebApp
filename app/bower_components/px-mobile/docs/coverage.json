@@ -1,0 +1,293 @@
+{
+  "coverage": "36.7%",
+  "expectCount": 267,
+  "actualCount": 98,
+  "files": {
+    "js/dom.js": {
+      "expectCount": 29,
+      "actualCount": 5,
+      "undocumentLines": [
+        224,
+        134,
+        216,
+        78,
+        55,
+        9,
+        123,
+        145,
+        226,
+        185,
+        49,
+        190,
+        186,
+        43,
+        207,
+        168,
+        154,
+        213,
+        219,
+        210,
+        199,
+        201,
+        106,
+        172
+      ]
+    },
+    "js/app.js": {
+      "expectCount": 10,
+      "actualCount": 5,
+      "undocumentLines": [
+        40,
+        42,
+        48,
+        45,
+        43
+      ]
+    },
+    "js/base.js": {
+      "expectCount": 6,
+      "actualCount": 2,
+      "undocumentLines": [
+        42,
+        27,
+        38,
+        25
+      ]
+    },
+    "js/collection.js": {
+      "expectCount": 18,
+      "actualCount": 0,
+      "undocumentLines": [
+        20,
+        43,
+        55,
+        32,
+        26,
+        22,
+        60,
+        89,
+        94,
+        34,
+        40,
+        30,
+        31,
+        35,
+        50,
+        70,
+        98,
+        84
+      ]
+    },
+    "js/core.js": {
+      "expectCount": 13,
+      "actualCount": 12,
+      "undocumentLines": [
+        26
+      ]
+    },
+    "js/db.js": {
+      "expectCount": 13,
+      "actualCount": 13,
+      "undocumentLines": []
+    },
+    "js/http.js": {
+      "expectCount": 11,
+      "actualCount": 11,
+      "undocumentLines": []
+    },
+    "js/interface.js": {
+      "expectCount": 5,
+      "actualCount": 2,
+      "undocumentLines": [
+        16,
+        23,
+        22
+      ]
+    },
+    "js/interfaces.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "js/log.js": {
+      "expectCount": 12,
+      "actualCount": 3,
+      "undocumentLines": [
+        15,
+        14,
+        37,
+        49,
+        41,
+        31,
+        82,
+        27,
+        45
+      ]
+    },
+    "js/model.js": {
+      "expectCount": 22,
+      "actualCount": 1,
+      "undocumentLines": [
+        31,
+        25,
+        80,
+        17,
+        28,
+        26,
+        102,
+        111,
+        92,
+        58,
+        53,
+        24,
+        27,
+        36,
+        84,
+        97,
+        63,
+        107,
+        75,
+        44,
+        23
+      ]
+    },
+    "js/page.js": {
+      "expectCount": 15,
+      "actualCount": 1,
+      "undocumentLines": [
+        143,
+        9,
+        115,
+        75,
+        103,
+        96,
+        107,
+        138,
+        111,
+        14,
+        85,
+        92,
+        135,
+        100
+      ]
+    },
+    "js/pages.js": {
+      "expectCount": 2,
+      "actualCount": 1,
+      "undocumentLines": [
+        9
+      ]
+    },
+    "js/pubsub.js": {
+      "expectCount": 11,
+      "actualCount": 7,
+      "undocumentLines": [
+        118,
+        24,
+        123,
+        41
+      ]
+    },
+    "js/router.js": {
+      "expectCount": 34,
+      "actualCount": 19,
+      "undocumentLines": [
+        64,
+        207,
+        21,
+        75,
+        36,
+        30,
+        204,
+        194,
+        29,
+        69,
+        32,
+        26,
+        443,
+        189,
+        187
+      ]
+    },
+    "js/service-locator.js": {
+      "expectCount": 10,
+      "actualCount": 2,
+      "undocumentLines": [
+        28,
+        29,
+        31,
+        34,
+        61,
+        38,
+        30,
+        51
+      ]
+    },
+    "js/simple-router.js": {
+      "expectCount": 17,
+      "actualCount": 9,
+      "undocumentLines": [
+        61,
+        74,
+        166,
+        46,
+        49,
+        43,
+        41,
+        51
+      ]
+    },
+    "js/view.js": {
+      "expectCount": 8,
+      "actualCount": 1,
+      "undocumentLines": [
+        12,
+        18,
+        14,
+        17,
+        15,
+        21,
+        16
+      ]
+    },
+    "js/views.js": {
+      "expectCount": 19,
+      "actualCount": 1,
+      "undocumentLines": [
+        44,
+        40,
+        120,
+        17,
+        36,
+        53,
+        72,
+        68,
+        57,
+        19,
+        76,
+        94,
+        61,
+        116,
+        20,
+        21,
+        23,
+        22
+      ]
+    },
+    "js/utils.js": {
+      "expectCount": 11,
+      "actualCount": 2,
+      "undocumentLines": [
+        116,
+        120,
+        46,
+        71,
+        53,
+        150,
+        139,
+        5,
+        205
+      ]
+    }
+  }
+}

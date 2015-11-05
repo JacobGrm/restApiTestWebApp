@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>es6 component</title>
+    
+    
+    <link rel="stylesheet" href="css/normalize.css">
+
+    <link rel='stylesheet prefetch' href='http://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.3/animate.min.css'>
+
+        <link rel="stylesheet" href="css/style.css">
+
+    
+    
+    
+  </head>
+
+  <body>
+
+    <template id="x-element-template">
+		<style>
+				:host{
+					display:block;
+					padding: 10px;
+					margin: 10px;
+					border: 1px dashed #222;
+					}
+				p { 
+					color: green; 
+				}
+			:unresolved {
+				border: 1px dashed red;
+				display: inline-block;
+			}
+		</style>
+		<p>I'm in Shadow DOM. My markup was stamped from a &lt;template&gt;.</p>
+</template>
+
+<x-element id="test" title="Title" body="This is a custom element">
+		this is rendered
+</x-element>
+    
+        <script src="js/index.js"></script>
+
+    
+    
+    
+  </body>
+</html>

@@ -1,0 +1,272 @@
+$breakpoints: (
+  'small':  ( min-width:  767px ),
+  'medium': ( min-width:  992px ),
+  'large':  ( min-width: 1200px )
+) !default;
+/*
+Mixin to manage responsive breakpoints
+@author Hugo Giraudel
+@param {String} $breakpoint - Breakpoint name
+@require $breakpoints
+@usage
+.selector {
+  color: red;
+  @include respond-to('small') {
+    color: blue;
+  }
+}
+*/
+
+@mixin respond($media) {
+  @if $media == mobile {
+    @media only screen and (max-width: 320px) { @content; }
+  }
+  @else if $media == tablet {
+    @media only screen and (min-width: 321px) and (max-width: 1024px) { @content; }
+  }
+  @else if $media == desktop {
+    @media only screen and (min-width: 1024px) { @content; }
+  }
+}
+
+@mixin respond-to($breakpoint) {
+  // If the key exists in the map
+  @if map-has-key($breakpoints, $breakpoint) {
+    // Prints a media query based on the value
+    @media #{inspect(map-get($breakpoints, $breakpoint))} {
+      @content;
+    }
+  }
+
+  // If the key doesn't exist in the map
+  @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Available breakpoints are: #{map-keys($breakpoints)}.";
+  }
+}
+
+
+
+@mixin font-sizes($fs-map, $fs-breakpoints: $breakpoints) {
+  @each $fs-breakpoint, $fs-font-size in $fs-map {
+    @if $fs-breakpoint == null {
+      font-size: $fs-font-size;
+    }
+    @else {
+      // If $fs-font-size is a key that exists in
+      // $fs-breakpoints, use the value
+      @if map-has-key($fs-breakpoints, $fs-breakpoint) {
+        $fs-breakpoint: map-get($fs-breakpoints, $fs-breakpoint);
+      }
+      @media screen and (min-width: $fs-breakpoint) {
+        font-size: $fs-font-size;
+      }
+    }
+  }
+}
+
+
+
+/// Mixin to customize scrollbars
+/// Beware, this does not work in all browsers
+/// @author Hugo Giraudel
+/// @param {Length} $size - Horizontal scrollbar's height and vertical scrollbar's width
+/// @param {Color} $foreground-color - Scrollbar's color
+/// @param {Color} $background-color [mix($primary, white, 75%)] - Scrollbar's color
+/// @example scss - Scrollbar styling
+///   @include scrollbars(.5em, slategray);
+@mixin scrollbars($size, $foreground-color, $background-color: mix($foreground-color, white, 50%)) {
+  ::-webkit-scrollbar {
+    width:  $size;
+    height: $size;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: $foreground-color;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: $background-color;
+  }
+
+  // For Internet Explorer
+  body {
+    scrollbar-face-color: $foreground-color;
+    scrollbar-track-color: $background-color;
+  }
+}
+
+
+
+
+
+// Utilities
+// -------------------------
+
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin centerer($horizontal: true, $vertical: true) {
+  position: absolute;
+  @if ($horizontal and $vertical) {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  } @else if ($horizontal) {
+    left: 50%;
+    transform: translate(-50%, 0);
+  } @else if ($vertical) {
+    top: 50%;
+    transform: translate(0, -50%);
+  }
+}
+
+@mixin font-size($sizeValue: 1.6) {
+  font-size: ($sizeValue * 10) + px;
+  font-size: $sizeValue + rem;
+}
+
+// Clearfix
+// Source: http://nicolasgallagher.com/micro-clearfix-hack/
+//
+// For modern browsers
+// 1. The space content is one way to avoid an Opera bug when the
+//    contenteditable attribute is included anywhere else in the document.
+//    Otherwise it causes space to appear at the top and bottom of elements
+//    that are clearfixed.
+// 2. The use of `table` rather than `block` is only necessary if using
+//    `:before` to contain the top-margins of child elements.
+@mixin clearfix() {
+  &:before,
+  &:after {
+    display: table; // 2
+    content: " "; // 1
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+
+//Colors
+/*
+@usage
+
+$values: #ff0000, #00ff00, #0000ff;
+.primary {
+  @include colors($values...);
+}
+
+$value-map: (text: #00ff00, background: #0000ff, border: #ff0000);
+.secondary {
+  @include colors($value-map...);
+}
+*/
+@mixin colors($text, $background, $border) {
+  color: $text;
+  background-color: $background;
+  border:1px solid $border;
+}
+
+// Box shadow
+@mixin box-shadow($shadows...) {
+  -moz-box-shadow: $shadows;
+  -webkit-box-shadow: $shadows;
+  box-shadow: $shadows;
+}
+
+// Gradients
+@mixin linear-gradient($color-from, $color-to) {
+  background-color: $color-from; // Old browsers
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$color-from), color-stop(100%,$color-to)); // Chrome, Safari4+
+  background-image: -webkit-linear-gradient(top, $color-from 0%, $color-to 100%);           // Chrome10+, Safari5.1+
+  background-image:    -moz-linear-gradient(top, $color-from 0%, $color-to 100%);           // FF3.6+
+  background-image:     -ms-linear-gradient(top, $color-from 0%, $color-to 100%);           // IE10+
+  background-image:      -o-linear-gradient(top, $color-from 0%, $color-to 100%);           // Opera 11.10+
+  background-image:         linear-gradient(to bottom, $color-from 0%, $color-to 100%);     // W3C
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$color-from}', endColorstr='#{$color-to}', GradientType=0 ); // IE6-9
+}
+
+@mixin directional-gradient($color-from, $color-to, $deg: 45deg) {
+  background-color: $color-from; // Old browsers
+  background-image: -webkit-gradient(linear, left bottom, right top, color-stop(0%,$color-from), color-stop(100%,$color-to)); // Chrome, Safari4+
+  background-image: -webkit-linear-gradient($deg, $color-from 0%, $color-to 100%);           // Chrome10+, Safari5.1+
+  background-image:    -moz-linear-gradient($deg, $color-from 0%, $color-to 100%);           // FF3.6+
+  background-image:     -ms-linear-gradient($deg, $color-from 0%, $color-to 100%);           // IE10+
+  background-image:      -o-linear-gradient($deg, $color-from 0%, $color-to 100%);           // Opera 11.10+
+  background-image:         linear-gradient($deg, $color-from 0%, $color-to 100%);     // W3C
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$color-from}', endColorstr='#{$color-to}', GradientType=1 ); // IE6-9
+}
+
+
+// Transforms
+// --------------------------------------------------
+@mixin transform($transform...) {
+  -webkit-transform: $transform;
+      -ms-transform: $transform;
+          transform: $transform;
+}
+
+
+// Transitions
+// --------------------------------------------------
+@mixin transition($transition...) {
+  -webkit-transition: $transition;
+     -moz-transition: $transition;
+          transition: $transition;
+}
+@mixin transition-property($property...) {
+  -webkit-transition-property: $property;
+     -moz-transition-property: $property;
+          transition-property: $property;
+}
+@mixin transition-duration($duration...) {
+  -webkit-transition-duration: $duration;
+     -moz-transition-duration: $duration;
+          transition-duration: $duration;
+}
+@mixin transition-timing-function($function...) {
+  -webkit-transition-timing-function: $function;
+     -moz-transition-timing-function: $function;
+          transition-timing-function: $function;
+}
+
+
+// Animations
+// --------------------------------------------------
+@mixin animation-name($name) {
+  -webkit-animation-name: $name;
+     -moz-animation-name: $name;
+          animation-name: $name;
+}
+@mixin animation-duration($duration) {
+  -webkit-animation-duration: $duration;
+     -moz-animation-duration: $duration;
+          animation-duration: $duration;
+}
+@mixin animation-direction($direction) {
+  -webkit-animation-direction: $direction;
+     -moz-animation-direction: $direction;
+          animation-direction: $direction;
+}
+
+
+// Misc
+// --------------------------------------------------
+@mixin hairline($type, $color, $offset) {
+  @if $type == single {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='1'><rect fill='#{$color}' x='0' y='0' width='100%' height='0.5'/></svg>");
+    background-position: $offset 100%;
+
+  } @else if $type == double {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='1'><rect fill='#{$color}' x='0' y='0' width='100%' height='0.5'/></svg>"),
+                      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='1'><rect fill='#{$color}' x='0' y='0' width='100%' height='0.5'/></svg>");
+    background-position: $offset 100%, $offset 0;
+  }
+  background-repeat: no-repeat;
+}

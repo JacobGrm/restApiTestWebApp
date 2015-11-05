@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <script src="../../bower_components/webcomponentsjs/webcomponents.min.js"></script>
+  <script src="../../bower_components/web-component-tester/browser.js"></script>
+  <link rel="import" href="../../bower_components/polymer/polymer.html">
+
+  <link rel="import" href="../../px-mobile.html">
+</head>
+<body>
+  <px-views id="fixture">
+    <px-view id="view1"></px-view>
+    <px-view id="view2"></px-view>
+    <px-view id="view3"></px-view>
+  </px-views>
+
+  <script>
+    suite('<px-views>', function() {
+      var element = document.getElementById('fixture');
+      test('has views property', function() {
+        assert.ok(element.views);
+      });
+
+      test('has next()', function() {
+        assert.ok(element.next);
+      });
+      test('has prev()', function() {
+        assert.ok(element.prev);
+      });
+      test('next() - changes the current view', function() {
+        element.next();
+        assert.equal(element.selected, 1);
+        element.next();
+        assert.equal(element.selected, 2);
+      });
+      test('prev() - changes the current view', function() {
+        element.prev();
+        assert.equal(element.selected, 1);
+        element.prev();
+        assert.equal(element.selected, 0);
+      });
+
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+
+<!-- TODO: List components -->
+<link rel="import" href="pxm-list-behavior.html"/>
+<link rel="import" href="pxm-list-item.html">
+
+<!-- TODO: List Styles
+<link rel="stylesheet" href="px.css">
+-->
+<link rel="stylesheet" href="pxm-list.css">
+
+<!--
+# pxm-list
+This component displays a list view.
+
+
+<div class$="{{foo}}"></div>
+
+<div style$="{{background}}"></div>
+
+<a href$="{{url}}">
+
+<label for$="{{bar}}"></label>
+
+<div data-bar$="{{baz}}"></div>
+
+-->
+<dom-module id="pxm-list">
+  <style>
+    :host {
+      display: block;
+    }
+  </style>
+  <template>
+    <div class="list-block media-list">
+      <ul>
+        <!-- TODO: Repeat pxm-list-item -->
+        <template is="dom-repeat" items="{{data}}">
+          <li class="list-item">
+            <pxm-list-item
+              on-click="handleClick"
+              title="{{item.title}}"
+              subtitle="{{item.subtitle}}"
+              text="{{item.text}}"
+              image="{{item.image}}">
+            </pxm-list-item>
+          </li>
+        </template>
+      </ul>
+    </div>
+  </template>
+  <script>
+    Polymer({
+      is: 'pxm-list',
+      behaviors: [px.list],
+      properties: {
+        data: {
+          type: Array,
+          value: [
+            {
+              title: 'List item 1'
+            },
+            {
+              title: 'List item 2',
+              subtitle: 'Some subtitle'
+            },
+            {
+              title: 'List item 3',
+              subtitle: 'Some subtitle',
+              text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+            },
+            {
+              title: 'List item 4',
+              subtitle: 'Some subtitle',
+              text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+              image: 'http://placehold.it/80'
+            }
+          ]
+        }
+      },
+      created: function(){
+        console.warn(this.tagName, 'created');
+      },
+
+      _clearSelected: function(){
+        var children = this.$$('li');
+          console.warn('_clearSelected', children);
+      },
+      handleClick: function(event){
+        this._clearSelected();
+        var el = Polymer.dom(event).localTarget;
+        console.warn('click', el);
+        el.toggleClass('selected');
+        this.fire('px-item-click', event);
+      }
+    });
+  </script>
+</dom-module>

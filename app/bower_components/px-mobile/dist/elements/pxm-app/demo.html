@@ -1,0 +1,131 @@
+<html>
+<head>
+  <title>pg-app demo</title>
+  <!-- Sets initial viewport load and disables zooming  -->
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+
+    <!-- Makes your prototype chrome-less once bookmarked to your phone's home screen -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+
+  <!-- TODO: Dependencies -->
+  <script src="../webcomponentsjs/webcomponents-lite.min.js"></script>
+  <link rel="import" href="../polymer/polymer.html">
+
+  <!-- TODO: pxm components -->
+  <link rel="import" href="../px-mobile/px-mobile.html">
+  <link rel="import" href="px-app.html">
+
+  <style media="screen">
+    body{
+      padding:25px;
+    }
+  </style>
+
+</head>
+<body>
+
+<!-- TODO: docs -->
+<h2>px-app</h2>
+
+
+
+<p>Below is the output from the px-app element.</p>
+
+<hr>
+
+
+<pxm-app id="myApp" name="My App">
+
+
+  <!-- TODO: Database-->
+	<pxm-db id="myDb"
+				 name="database"
+				 base-url="http://localhost:5984/emdb">
+
+		<!-- TODO: Collections -->
+
+    <pxm-collection id="issueCollection" params='{"startkey":"resource-a","endkey":"resource-z"}'></px-collection>
+
+		<!-- TODO: Models -->
+    <pxm-model id="issueModel"></px-model>
+
+	</pxm-db>
+
+  <pxm-navbar id="appNavbar" title="App"></pxm-navbar>
+
+  <aside class="sidebar">
+    <nav class="nav">
+      <ul>
+        <li><a href="#/sandbox-view">Sandbox View</a></li>
+        <li>
+          <a href="#/sandbox-view/deck-1">Deck 1 View</a>
+          <ul>
+            <li><a href="#/sandbox-view/deck-1/card-1">Card 1 View</a></li>
+            <li><a href="#/sandbox-view/deck-1/card-2">Card 2 View</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#/sandbox-view/deck-2">Deck 2 View</a>
+          <ul>
+            <li><a href="#/sandbox-view/deck-2/card-3">Card 3 View</a></li>
+            <li><a href="#/sandbox-view/deck-2/card-4">Card 4 View</a></li>
+          </ul>
+        </li>
+      </ul>
+
+    </nav>
+  </aside>
+
+  <pxm-views id="appViews">
+    <pxm-view id="sandboxView" route="/sandbox-view">
+      <px-deck id="deck-1">
+         <px-card id="card-1" header-text="What is a Card?">
+          A Card is an editable container that resides within the content area of your screen. For example, there are three sections on this page--each section is a card.
+        </px-card>
+        <px-card id="card-2" header-text="deck-1 - card 2">
+          deck-1 - card 2
+        </px-card>
+      </px-deck>
+
+      <px-deck id="deck-2">
+        <px-card id="card-3" header-text="deck-2 - card 3">
+          deck-2 - card 3
+        </px-card>
+        <px-card id="card-4" header-text="deck-2 - card 4">
+          deck-2 - card 4
+        </px-card>
+      </px-deck>
+    </pxm-view>
+
+
+    <!-- TODO: Example View -->
+    <pxm-view id="listView" route="/list">
+      <h2>Details View</h2>
+      <px-deck id="deck-3">
+        <px-card id="card-5" header-text="Details View">
+        </px-card>
+
+      </px-deck>
+    </pxm-view>
+
+
+
+
+    <!-- TODO: Example view -->
+
+    <pxm-view id="detailsView" route="/details">
+      <h2>Details View</h2>
+      <px-deck id="deck-3">
+        <px-card id="card-5" header-text="Details View">
+        </px-card>
+
+      </px-deck>
+    </pxm-view>
+  </pxm-views>
+</pxm-app>
+
+
+</body>
+</html>

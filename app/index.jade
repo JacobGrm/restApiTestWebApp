@@ -1,0 +1,26 @@
+//- index.jade
+extends ./views/layout
+block title
+  title px-mobile-seed-app demo
+
+block styles
+  // build:css styles/main.css
+  link(rel='stylesheet', href='styles/main.css')
+  // endbuild
+
+block scripts
+  //Dependencies
+  script(src='./bower_components/webcomponentsjs/webcomponents.js')
+  link(rel='import' href='./bower_components/polymer/polymer.html')
+  // endbuild
+
+  link(rel='import' href='./bower_components/px-mobile/px-mobile.html')
+  link(rel='import' href='./bower_components/px-mobile/px-mobile-theme.html')
+
+  // will be replaced with elements/elements.vulcanized.html
+  link(rel='import', href='./elements/elements.html')
+  // endreplace
+  script(src='scripts/app.js')
+
+block content
+  include ./views/app.jade

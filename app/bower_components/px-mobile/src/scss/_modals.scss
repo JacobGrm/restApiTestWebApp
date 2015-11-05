@@ -1,0 +1,58 @@
+//
+// Modals
+// --------------------------------------------------
+
+.modal {
+  position: fixed;
+  top: 0;
+  z-index: 11;
+  width: 100%;
+  min-height: 100%;
+  overflow: hidden;
+  background-color: #fff;
+  opacity: 0;
+  -webkit-transition: -webkit-transform .25s, opacity 1ms .25s;
+     -moz-transition: -moz-transform .25s, opacity 1ms .25s;
+          transition: transform .25s, opacity 1ms .25s;
+  @include transform(translate3d(0, 100%, 0));
+
+  // Active modal
+  &.active {
+    height: 100%;
+    opacity: 1;
+    -webkit-transition: -webkit-transform .25s;
+       -moz-transition: -moz-transform .25s;
+            transition: transform .25s;
+    @include transform(translate3d(0, 0, 0));
+  }
+}
+
+@media screen and (min-width: 768px){
+  
+}
+.popover {
+    position: absolute;
+    top: 72px;
+    display: block;
+    opacity: 1;
+}
+.popover {
+    position: fixed;
+    top: 55px;
+    left: 50%;
+    z-index: 20;
+    display: none;
+    width: 280px;
+    margin-left: -140px;
+    background-color: #fff;
+    border-radius: 6px;
+    -webkit-box-shadow: 0 0 15px rgba(0,0,0,.1);
+    box-shadow: 0 0 15px rgba(0,0,0,.1);
+    opacity: 0;
+    -webkit-transition: all .25s linear;
+    -moz-transition: all .25s linear;
+    transition: all .25s linear;
+    -webkit-transform: translate3d(0,-15px,0);
+    -ms-transform: translate3d(0,-15px,0);
+    transform: translate3d(0,-15px,0);
+}

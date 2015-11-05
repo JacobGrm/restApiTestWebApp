@@ -1,0 +1,23 @@
+extends ./layout
+block title
+  title px-mobile | Components
+block content 
+  .hero.container.full-width
+    .col-12.text-center
+      h1 UI Components
+      //p Web Components that serve as basic building blocks.
+      p Basic building blocks that use the Predix design system
+  //
+    .col-4
+      p.padding-25.text-center
+        i.fa.fa-4x.fa-cubes
+      
+  .container.full-width.gutters
+    .col-12
+      include ./_cards
+      include ./_lists
+      include ./_modals
+      include ./_navbars
+      include ./_toolbars
+      include ./_pages
+      include ./_views

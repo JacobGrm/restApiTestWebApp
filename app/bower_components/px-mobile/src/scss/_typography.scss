@@ -1,0 +1,135 @@
+@import "_variables";
+@import "_mixins";
+
+/*
+ Helper functions
+*/
+@each $header, $size in (h1: 5, h2: 4, h3: 3, h4: 2, h5: 1.5, h6: .8) {
+  #{$header} {
+    //@include font-size($size);
+    margin-bottom: 0;
+    small{
+      font-size: 60%;
+      margin-left: 10px;
+      font-weight: 300;
+    }
+    @include respond(mobile) {
+    }
+    @include respond(tablet) {
+    //  font-size: percentage($size / .5);
+    }
+  }
+}
+
+//Heading 1
+h1 {
+  @include font-sizes($h1-font-sizes);
+}
+//Heading 2
+h2 {
+  @include font-sizes($h2-font-sizes);
+}
+//Heading 3
+h3 {
+  @include font-sizes($h3-font-sizes);
+}
+
+//Heading 4
+h4 {
+  @include font-sizes($h4-font-sizes);
+}
+p, ul, ol {
+  @include font-sizes($p-font-sizes);
+}
+
+pre {
+
+}
+
+code, pre tt {
+//  color: #d1134e;
+  //background-color: transparent;
+  //border: none;
+}
+
+//background-image: -moz-linear-gradient(45deg,#0a1855 0,#357ECE 100%);
+.hero{
+  @include directional-gradient(#0a1855, #357ECE, 45);
+  background-image: -webkit-gradient(linear, left bottom, right top, color-stop(0%, #0a1855), color-stop(100%, #357ECE));
+  color: #fff;
+  padding: 30px;
+  p{
+    max-width: 750px;
+    margin: 0 auto 20px;
+    font-size: 1.5rem;
+    font-weight: 300;
+    line-height: 38px;
+    text-align: center;
+  }
+}
+  .page-header {
+    display: block;
+    border-bottom: 1px solid #ccc;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    h2 {
+        padding: 0;
+        margin: 0;
+    }
+  }
+
+
+code, tt {
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: nowrap;
+  border-radius: 3px;
+}
+
+pre code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+.highlight pre {
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre {
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+pre code, pre tt {
+//  background-color: transparent;
+  border: none;
+}
+
+blockquote {
+  border-left: 4px solid #dddddd;
+  padding: 0 15px;
+  color: #777777;
+}
+blockquote > :first-child {
+  margin-top: 0;
+}
+blockquote > :last-child {
+  margin-bottom: 0;
+}
+
+hr{
+
+    margin: 25px 10px;
+
+    border: 1px solid $chrome-color;
+
+}

@@ -1,0 +1,14 @@
+mixin alert(type, text)
+  .alert(class=type)=text
+    
+.page-header
+  h2 Alerts
+
+section
+  pxm-example
+    +alert(null, 'This is a unstyled alert.')
+    +alert('warn', 'This is a warn alert.')
+    +alert('success', 'This is a success alert.')
+    +alert('error', 'This is a error alert.')
+    +alert('info', 'This is a info alert.')
+  

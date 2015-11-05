@@ -1,0 +1,86 @@
+<dom-module id="pxm-card">
+  <style>
+    :host {
+      display: block;
+    }
+    :host .facebook-avatar{
+      padding: 4px;
+      margin-right: 10px;
+    }
+    :host .facebook-name {
+        font-weight: bold;
+        font-size: 1.1rem;
+    }
+    :host small.facebook-date{
+      display: block;
+      font-size: 1rem;
+    }
+  </style>
+  <template>
+
+    <template is="dom-if" if="{{facebook}}">
+      <div class="card facebook-card">
+        <header class="card-header no-border container">
+          <div class="col-2">
+            <div class="facebook-avatar">
+              <img src$="{{avatar}}" class="img-responsive">
+            </div>
+          </div>
+          <div class="col-10">
+            <span class="facebook-name">{{name}}</span>
+            <small class="facebook-date">{{date}}</small>
+          </div>
+        </header>
+        <section class="card-content">
+          <content></content>
+        </section>
+        <footer class="card-footer no-border">
+          <div class="btn-group">
+            <a href="#" class="btn link block">Like</a>
+            <a href="#" class="btn link block">Comment</a>
+            <a href="#" class="btn link block">Share</a>
+          </div>
+        </footer>
+      </div>
+    </template>
+    <template is="dom-if" if="{{!facebook}}">
+      <div class="card">
+        <header hidden$="{{!title}}">
+          <span>{{title}}</span>
+        </header>
+        <section>
+          <content></content>
+        </section>
+      </div>
+    </template>
+
+  </template>
+  <script type="text/javascript">
+    Polymer({
+      is: "pxm-card",
+      properties: {
+        title: {
+          type: String
+        },
+        name: {
+          type: String,
+          value: 'John Doe'
+        },
+        avatar: {
+          type: String,
+          value: 'images/avatar.png'
+        },
+        date: {
+          type: String,
+          value: 'Monday at 3:47 PM'
+        },
+        image: {
+          type: String
+        },
+        facebook: {
+          type: Boolean, value: false
+        }
+      }
+    });
+  </script>
+</dom-module>

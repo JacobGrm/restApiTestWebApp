@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html class="px-mobile">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="px-mobile usage docs">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>px-mobile</title>
+    <!-- Web Application Manifest-->
+    <!--link(rel='manifest', href='manifest.json')-->
+    <!-- Tile color for Win8-->
+    <meta name="msapplication-TileColor" content="#333333">
+    <!-- Add to homescreen for Chrome on Android-->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="PSK">
+    <link rel="icon" sizes="192x192" href="images/touch/chrome-touch-icon-192x192.png">
+    <!-- Add to homescreen for Safari on iOS-->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Px Mobile Starter Kit">
+    <link rel="apple-touch-icon" href="images/touch/apple-touch-icon.png">
+    <!-- Tile icon for Win8 (144x144)-->
+    <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+    <!-- build:css styles/main.css-->
+    <!--link(rel='stylesheet', href='styles/main.css')-->
+    <!-- endbuild-->
+    <!-- build:js bower_components/webcomponentsjs/webcomponents-lite.min.js-->
+    <!--script(src='bower_components/webcomponentsjs/webcomponents-lite.js')-->
+    <!-- endbuild-->
+    <!-- will be replaced with elements/elements.vulcanized.html-->
+    <!--link(rel='import', href='elements/elements.html')-->
+    <!-- endreplace-->
+    
+    <!--Dependencies-->
+    <script src="../bower_components/webcomponentsjs/webcomponents.js"></script>
+    <!--script(src='https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/0.7.13/webcomponents.min.js')-->
+    <link rel="import" href="../bower_components/polymer/polymer.html">
+    <link rel="import" href="../px-mobile.html">
+    <link rel="import" href="../px-mobile-theme.html">
+    <link rel="stylesheet" href="docs.css">
+    <!-- - For px-example component.-->
+    <script src="../bower_components/highlightjs/highlight.pack.min.js"></script>
+    <link rel="stylesheet" href="../bower_components/highlightjs/styles/github.css">
+    <title>px-mobile | Sign-in example</title>
+  </head>
+  <body class="docs">
+    <!--pxm-navbar(title='px-mobile', fixed)-->
+    <article class="container full-width">
+      <section class="col-12">
+        <div class="container gutters">
+          <div class="col-12">
+            <div class="page-header">
+              <h2>Sign-in example<small>Basic form and design for a mobile sign in screen.</small></h2>
+            </div>
+            <px-example>
+              <div class="container gutters">
+                <div class="col-sm-3 hidden-sm push-4"></div>
+                <div class="col-sm-6">
+                  <div class="box padding-20">
+                    <div class="logo padding-10 text-center"><img src="images/ge-monogram.svg" height="100px">
+                      <h2 class="no-margin">My App</h2>
+                      <p>Powered by Predix Mobility</p>
+                    </div>
+                    <form>
+                      <input type="text" placeholder="SSO" required>
+                      <input type="password" placeholder="Password" required>
+                      <button class="block primary">Sign in</button>
+                    </form>
+                    <hr><a class="color-alt">Create account</a><a class="color-alt">Reset password</a>
+                  </div>
+                </div>
+              </div>
+            </px-example>
+          </div>
+        </div>
+      </section>
+    </article>
+    <script>
+      HTMLImports.whenReady(function(){
+        hljs.configure({
+          tabReplace: '  '
+        })
+        hljs.initHighlightingOnLoad()
+      })
+    </script>
+  </body>
+</html>

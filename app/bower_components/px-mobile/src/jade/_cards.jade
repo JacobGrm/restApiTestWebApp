@@ -1,0 +1,34 @@
+mixin card(title)
+  .col-6
+    pxm-card(title=title)
+      if block
+        block
+      else
+        p No content provided
+        
+.page-header
+  h2 Cards
+    small An editable container that resides within the content area of your screen
+
+.grid.full-width.gutters-sm
+    pxm-card(title='Basic Card')
+      p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Duis aute irure dolor in reprehenderit in voluptate velit.
+      
+    pxm-card(title='Form Card')
+      form
+        input(type="text", placeholder='Enter title here...')
+        textarea(placeholder='Lorem ipsum dolor sit amet...', rows='10')
+        button.button.block Reset
+        button.button.block.primary Submit
+      
+.grid
+  pxm-card(title='Image Card')
+    img.responsive(src='images/image.png', style='max-height:400px')
+  pxm-card(title='Map Card')
+    img.responsive(src='images/staticmap.png', style='max-height:400px')
+
+.grid
+  pxm-card(name='John Doe', facebook)
+    img.responsive(src='images/image.png', style='max-height:400px')
+  pxm-card(name='John Doe', facebook)
+    p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.

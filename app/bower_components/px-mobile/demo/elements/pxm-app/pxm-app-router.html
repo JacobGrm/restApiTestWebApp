@@ -1,0 +1,93 @@
+<script type="text/javascript">
+  var router = {
+    _initLocation : function() {
+      var self = this;
+      console.warn('listening for hashchange');
+      if ("onhashchange" in window) {
+        console.warn('The browser supports the hashchange event!');
+        window.addEventListener('hashchange', function(e) {
+          self._handleRoute(e);
+        });
+      }
+    },
+
+    /**
+     * I handle when the route changes
+     * @param e
+     * @private
+     */
+    _handleRoute : function(e) {
+      var self = this,
+          parts = [];
+      parts = location.hash.replace('#/', '').split('/');
+
+      var routeMap = {
+        view : parts[0],
+        deck : parts[1],
+        card : parts[2]
+      };
+
+      console.log(parts, routeMap);
+
+      //Clear all styles
+      self._elements.forEach(function(el) {
+        self._clearActive(el.id);
+      });
+
+      //Set view/deck/card active
+      for (var route in routeMap) {
+        if (routeMap[route]) {
+          self._setActive(routeMap[route]);
+        }
+      }
+
+      //If no card and a deck. set all deck cards to active
+      var selector = '';
+      if (routeMap.deck && !routeMap.card) {
+        selector = 'px-deck#' + routeMap.deck + ' > px-card';
+        console.warn('Set all cards in deck', routeMap.deck, selector);
+        Polymer.dom(this).querySelectorAll(selector).forEach(function(el) {
+          el.className = 'active';
+        });
+      }
+
+      //If a view and no deck or cards, set all to active
+      if (routeMap.view && !routeMap.deck && !routeMap.card) {
+        self._elements.forEach(function(el) {
+          self._setActive(el.id);
+        });
+      }
+
+      console.warn('hashChange', location.hash);
+    }
+  };
+</script>
+
+
+
+<dom-module id="pxm-app-router">
+  <style>
+    :host {
+      display: block;
+    }
+  </style>
+  <template>
+    Template
+  </template>
+  <script>
+    Polymer({
+      is: 'pxm-app-router',
+      properties:{
+        //The routes of the app
+        routes: {
+          type: Object,
+          value:{}
+        }
+      },
+      created: function(){
+        px.utils.addMixin(new px.mobile.logger('px-app-router'), this);
+        this.logApi('created', this);
+      }
+    });
+  </script>
+</dom-module>

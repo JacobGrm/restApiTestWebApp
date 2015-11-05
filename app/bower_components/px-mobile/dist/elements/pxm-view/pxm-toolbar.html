@@ -1,0 +1,72 @@
+
+<dom-module id="pxm-toolbar">
+  <style>
+  :host{
+    display: block;
+  }
+  :host footer{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  :host .fixed{
+    position: fixed;
+  }
+
+  :host footer a {
+    font-size: .9em;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 5px 10px;
+  }
+
+  :host footer a:hover{
+    color: #111;
+  }
+
+  .toolbar-fixed-bottom {
+  	position: fixed;
+  	bottom: 0;
+  	left: 0;
+  	right: 0;
+  	display: block;
+  	min-height: 45px;
+  }
+
+  </style>
+  <template>
+    <footer class="container">
+        <div class="col-12">
+          <content></content>
+        </div>
+    </footer>
+  </template>
+  <script>
+  Polymer({
+    is: 'pxm-toolbar',
+    properties:{
+      routes: {
+        type: Object,
+        value:{}
+      },
+      fixed: {
+        type: Boolean,
+        value: false
+      }
+    },
+    created: function(){
+      console.warn(this.tagName, 'created', this);
+    },
+    ready: function(){
+      console.warn(this.tagName, 'ready', this);
+      if(this.fixed){
+        this.toggleClass('position-fixed');
+      }
+    },
+    attached: function(){
+      console.warn(this.tagName, 'attached', this);
+    }
+  });
+  </script>
+</dom-module>

@@ -1,0 +1,191 @@
+
+
+<link rel="import" href="pxm-db-behavior.html"/>
+
+<!--
+## Overview
+px.db was created to help web developers build applications that work as well offline as they do online.
+
+It enables applications to store data locally while offline,
+then synchronize it with CouchDB and compatible servers when the application is back online,
+keeping the user's data in sync no matter where they next login.
+
+```
+var db = new px.db('/cblite');
+
+//or
+//px.db.request('/default/test-' + Date.now(), {method:'PUT', data: {name:'test'}});
+
+db.put({
+_id: 'test-doc-' + Date.now(),
+name: 'Jonnie',
+age: 28
+});
+
+var feed = db.changes()
+.on('change', function(change) {
+console.log('Ch-Ch-Changes', change);
+})
+.on('complete', function(info){console.warn(info);})
+.on('error', function(err){console.error(err);});
+
+//feed.cancel();
+db.replicate.to('http://example.com/mydb');
+```
+
+## Usage
+There are 2 ways to use this element, 1 in your custom element or 2. in your web page.
+
+This method creates a database or opens an existing one. If you use a URL like 'http://domain.com/dbname'
+
+### In HTML:
+
+```
+<pxm-db id="db1" base-url="/predixgo" adapter="http"></pxm-db>
+```
+
+```
+var db = document.querySelector('#db1').db;
+db.get('sync-user1').then(function(resp){
+	resp.json().then(function(json){
+		console.log(json);
+	});
+});
+```
+
+### In JavaScript:
+
+```
+var db = new px.db('/predixgo', {adapter : 'http'});
+db.get('sync-user1').then(function(resp){
+	resp.json().then(function(json){
+		console.log(json);
+	});
+});
+```
+
+## Methods
+The following examples provides a way to perform CRUD operations on model.
+
+### Create database instance:
+
+```
+var db = new px.mobile.db('/predixgo');
+```
+
+### Create a document:
+
+```
+var doc = {
+_id: 'test-doc1',
+name: 'New Doc'
+};
+db.put(doc).then(function(resp){
+	console.log(resp);
+}).catch(function(err){
+	console.warn(err);
+});
+```
+
+### Get document:
+
+```
+db.get('test-doc1').then(function(data){
+	console.log(data);
+doc = data;
+}).catch(function(err){
+	console.warn(err);
+});
+```
+
+### Update document:
+
+```
+doc.name = 'Updated doc1';
+db.put(doc).then(function(resp){
+	console.log(resp);
+}).catch(function(err){
+	console.warn(err);
+});
+```
+
+### Delete document:
+
+```
+db.remove(doc).then(function(resp){
+	console.log(resp);
+}).catch(function(err){
+	console.warn(err);
+});
+```
+
+### Get attachment:
+
+```
+db.getAttachment('data-card-my-predix-card', 'my-predix-card_1.1.9.zip').then(function(resp){
+	console.log(resp); //Blob
+});
+```
+
+@element pxm-db
+@blurb Web Component element
+@homepage index.html
+-->
+<dom-module id="pxm-db">
+	<template>
+		<content></content>
+	</template>
+</dom-module>
+
+<script type="text/javascript">
+	Polymer({
+		is : 'pxm-db',
+		behaviors : [px.mobile.DB],
+		properties : {
+
+			//The URL target of the data source.
+			baseUrl : {
+				type : String,
+				value : 'http://localhost:5984/default'
+			},
+
+			//The last response data object that will be populated.
+			lastResponse : {
+				type : Object,
+				notify : true,
+				value : {}
+			},
+
+			//The instance of the adapter used.
+			adapter : {
+				type : Object,
+				value : {}
+			}
+
+		},
+		ready : function() {
+			if (!this.baseUrl) {
+				throw Error(this.tagName + ' cannot be created without a base-url!');
+			}
+			var logger = new px.mobile.Logger(this.tagName + '#' + this.id, {
+				colors : {
+					debug : 'color:blue'
+				}
+			});
+			px.mobile.utils.addMixin(logger, this);
+			this.logApi(this.id, 'ready');
+			this.fire('pxm-db-ready');
+		},
+		attached : function() {
+			if (!this.id) {
+				throw Error(this.tagName + ' cannot be created without an id!');
+			}
+			var adapter = new px.mobile.DB(this.id, {baseUrl: this.baseUrl});
+			//Set the adapter.
+			this.adapter = adapter;
+			//Mixin the adapter
+			px.mobile.utils.addMixin(adapter, this);
+			this.logApi(this.id, 'attached');
+		}
+	});
+</script>

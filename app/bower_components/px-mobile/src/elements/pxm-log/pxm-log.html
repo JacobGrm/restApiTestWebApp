@@ -1,0 +1,50 @@
+
+<dom-module id="pxm-log">
+  <style>
+    :host {
+      display: block;
+    }
+  </style>
+  <template>
+    <a href="#" class="item-link item-content" on-click="handleClick">
+      <div class="item-media">
+        <img src="{{image}}">
+      </div>
+      <div class="item-inner">
+        <div class="item-title-row">
+          <div class="item-title">{{title}}</div>
+          <div class="item-after"></div>
+        </div>
+        <div class="item-subtitle">{{subtitle}}</div>
+        <div class="item-text">{{text}}</div>
+      </div>
+    </a>
+  </template>
+  <script>
+    Polymer({
+      is: 'pxm-log',
+      properties: {
+        title: {
+          type: String,
+          value: 'List Title'
+        },
+        subtitle: {
+          type: String,
+          value: 'List Sub-Title'
+        },
+        text: {
+          type: String,
+          value: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean in arcu non augue mollis fermentum. Curabitur sit amet vestibulum orci, vitae laoreet felis.'
+        }
+      },
+      created: function(){
+        console.warn(this.tagName, 'created');
+      },
+
+      handleClick: function(e){
+
+        this.fire('px-list-item:handleClick', e);
+      }
+    });
+  </script>
+</dom-module>

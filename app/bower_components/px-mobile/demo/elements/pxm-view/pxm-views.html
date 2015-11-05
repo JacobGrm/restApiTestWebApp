@@ -1,0 +1,170 @@
+
+<!-- TODO: px components
+<link rel="import" href="../pg-card/pg-card.html"/>
+-->
+
+<link rel="import" href="pxm-toolbar.html"/>
+<link rel="import" href="../pxm-navbar/component.html"/>
+<link rel="import" href="pxm-router.html"/>
+<script src="pxm-view-transitions.js"></script>
+<link rel="import" href="pxm-views-behavior.html"/>
+<link rel="stylesheet" href="elementTransitions.css"/>
+<!--
+# Overview
+This provides a wrapper for pxm-view elements.
+
+## Usage
+To use this component in your custom component do the following:
+
+```
+<dom-module id="demo-view">
+  <template>
+    <pxm-views id="app-views">
+      <pxm-view id="demo-card-view">
+        [View Content]
+      <pxm-view>
+    </pxm-views>
+  </template>
+</dom-module>
+<script>
+  Polymer({
+  is: 'demo-view',
+    init: function(){
+      // this is where you can do some initialization of your card
+    },
+    behaviors: [pxm.views]
+  });
+</script>
+```
+@element pxm-views
+@blurb Element containing basic view management
+@demo demo.html
+@homepage index.html
+-->
+<dom-module id="pxm-views">
+<style>
+   :host {
+     display: block;
+     position: absolute;
+     -webkit-overflow-scrolling: touch;
+     -webkit-transition: all 0.45s;
+     transition: all 0.45s;
+      height: 100%;
+      width: 100%;
+   }
+
+   ::content pxm-view,
+   ::content pxm-view.et-page {
+
+     -webkit-transition: all 0.4s;
+     transition: all 0.4s;
+   }
+
+   ::content pxm-view.current,
+   ::content pxm-view.et-page-current {
+     opacity: 1;
+     visibility: visible;
+     -webkit-transform: translate(0, 0);
+     transform: translate(0, 0);
+   }
+
+   ::content pxm-view.next {
+     -webkit-transform: translate(110%, 0);
+     transform: translate(110%, 0);
+     opacity: 1;
+     visibility: visible;
+   }
+
+   ::content pxm-view.previous {
+     -webkit-transform: translate(-110%, 0);
+     transform: translate(-110%, 0);
+     opacity: 1;
+     visibility: visible;
+   }
+
+ </style>
+  <template>
+      <content></content>
+  </template>
+</dom-module>
+<script>
+  Polymer({
+    is : 'pxm-views',
+    behaviors : [
+      px.mobile.behaviors.ViewsBehavior,
+      px.mobile.behaviors.ViewEventsBehavior
+    ],
+
+        // add properties and methods on the element's prototype
+        properties : {
+
+          // declare properties for the element's public API
+          title : {
+            type : String,
+            value : 'Predix Mobile View'
+          },
+
+          //The default selected view
+          selected: {
+            type: Number,
+            reflectToAttribute: true,
+            notify: true,
+            observer: '_setCurrent',
+            value: 0
+          },
+
+          //The current context of the view.
+          context : {
+            type : Object,
+            value : {}
+          },
+
+          //The list of views
+          ViewTransitions : {
+            type : Object,
+            value : {}
+          },
+
+          //The list of views
+          views : {
+            type : Object,
+            value : {}
+          },
+
+          //The views routes
+          routes : {
+            type : Object,
+            value : {}
+          },
+
+          //The in effect
+          in: {
+            type: String
+          },
+
+          //The out effect
+          out: {
+            type: String
+          },
+
+          selectedClassname: {
+            type: String,
+            value: 'et-page-current'
+          },
+
+          loop: {
+            type: Boolean,
+            value: true
+          },
+
+          autoRouter: {
+            type: Boolean,
+            value: false
+          },
+          routerId: {
+            type: String
+          }
+        }
+  });
+
+</script>

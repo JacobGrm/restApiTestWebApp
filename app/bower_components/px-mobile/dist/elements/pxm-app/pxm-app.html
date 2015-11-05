@@ -1,0 +1,57 @@
+
+<!-- TODO: px components
+<link rel="import" href="../px-card/px-card.html"/>
+<link rel="import" href="../px-card/px-deck.html"/>
+<link rel="import" href="../px-view/px-view.html"/>
+-->
+
+
+
+<!-- TODO: Behaviors -->
+<link rel="import" href="pxm-app-behavior.html"/>
+
+<!--
+## Usage
+To use this component in your custom component do the following:
+
+```
+<dom-module id="demo-app">
+    <template>
+      <px-app id="myApp" name="Issue Resolution" style="display:none;" >
+        <content></content>
+      </px-app>
+    </template>
+</dom-module>
+<script>
+  Polymer({
+    is: 'demo-app',
+    behaviors: [px.mobile.behaviors.app],
+    init: function(){
+      // this is where you can do some initialization of your card
+    }
+  });
+</script>
+```
+@element px-app
+@blurb Element containing basic logic for managing a Mobile/Web app.
+@demo demo.html
+@homepage index.html
+-->
+<dom-module id="pxm-app">
+  <style>
+  :host{
+    display: block;
+  }
+  </style>
+  <template>
+    <content></content>
+  </template>
+  <script>
+    Polymer({
+      behaviors: [
+        px.mobile.behaviors.app
+      ],
+      is: 'pxm-app'
+    });
+  </script>
+</dom-module>

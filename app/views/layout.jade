@@ -1,0 +1,44 @@
+//- layout.jade
+doctype html
+html.pxm
+  head
+    //meta(charset='utf-8')
+    //meta(name='description', content='px-mobile usage docs')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+
+    // Web Application Manifest
+    //link(rel='manifest', href='manifest.json')
+    
+    // Tile color for Win8
+    meta(name='msapplication-TileColor', content='#333333')
+    
+    // Add to homescreen for Chrome on Android
+    meta(name='mobile-web-app-capable', content='yes')
+    meta(name='application-name', content='PSK')
+    link(rel='icon', sizes='192x192', href='images/icons/favicon-white-144px.png')
+    
+    // Add to homescreen for Safari on iOS
+    meta(name='apple-mobile-web-app-capable', content='yes')
+    meta(name='apple-mobile-web-app-status-bar-style', content='black')
+    meta(name='apple-mobile-web-app-title', content='Px Mobile Starter Kit')
+    link(rel='apple-touch-icon', href='images/icons/favicon-white-144px.png')
+    
+    // Tile icon for Win8 (144x144)
+    meta(name='msapplication-TileImage', content='images/icons/favicon-white-144px.png')
+    
+    //TODO Custom styles
+    block styles
+        
+    //TODO Custom scripts
+    block scripts
+
+    block title
+      title Predix Mobility Seed App
+  
+  body
+    block content
+      p This is replaced by content.
+    script.
+      HTMLImports.whenReady(function(){
+          console.log('app ready!');
+      })

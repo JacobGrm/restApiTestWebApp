@@ -1,0 +1,74 @@
+<html>
+<head>
+  <title>px-model demo</title>
+
+  <!-- TODO: Dependencies -->
+  <script src="../webcomponentsjs/webcomponents-lite.min.js"></script>
+  <link rel="import" href="../polymer/polymer.html">
+   <link rel="stylesheet" href="/styles/Github2.css"/>
+
+
+     <!-- TODO: Testing -->
+     <link rel="stylesheet" href="../jasmine/lib/jasmine-core/jasmine.css"/>
+     <script src="../jasmine/lib/jasmine-core/json2.js"></script>
+     <script src="../jasmine/lib/jasmine-core/jasmine.js"></script>
+     <script src="../jasmine/lib/jasmine-core/jasmine-html.js"></script>
+     <script src="../jasmine/lib/jasmine-core/boot.js"></script>
+
+
+  <!-- TODO: pxm components -->
+  <link rel="import" href="px-model.html">
+</head>
+<body>
+
+<!-- TODO: px-view docs -->
+<h2>px-model</h2>
+<p>The px-model element enables data-binding to a model's properties.</p>
+
+
+<!-- TODO: Example usage -->
+<dom-module id="example-model">
+  <template>
+    <px-model id="model1"
+      auto
+      base-url="http://localhost:5984/default"
+      key="{{mykey}}"
+      id-attribute="_id"
+      data="{{data}}"></px-model>
+
+    <!-- NOTE - Display model data -->
+    <input id="mykey" value="{{mykeyValue:input}}" type="text"/>
+    <dl class="">
+      <dt>_id:</dt><dd>{{data._id}}</dd>
+      <dt>_rev:</dt><dd>{{data._rev}}</dd>
+      <dt>channels:</dt><dd>{{data.channels}}</dd>
+      <dt>displayName:</dt><dd>{{data.displayName}}</dd>
+      <dt>description:</dt><dd>{{data.description}}</dd>
+      <!--dt>image:</dt><dd><img src="data:image/png;base64,[[data.image_data]]"/></dd-->
+      <dt>dataType:</dt><dd>{{data.dataType}}</dd>
+      <dt>type:</dt><dd>{{data.type}}</dd>
+      <dt>tags:</dt><dd>{{data.tags}}</dd>
+      <dt>parent:</dt><dd>{{data.parent}}</dd>
+
+    </dl>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'example-model',
+      properties: {
+        mykey: {
+          type: String,
+          notify: true,
+          value: 'key'
+        }
+      }
+    });
+  </script>
+</dom-module>
+
+<!-- NOTE: Usage in application-->
+<example-model id="sample-model" mykey="data-card-help-footer"></example-model>
+
+</body>
+</html>

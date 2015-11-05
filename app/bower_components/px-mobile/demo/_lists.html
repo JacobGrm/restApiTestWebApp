@@ -1,0 +1,47 @@
+
+<script>
+  var basicItems = [ 
+   {title: 'Item 1'},
+   {title: 'Item 2'},
+   {title: 'Item 3'},
+   {title: 'Item 4'}
+  ];
+  var textItems = [ 
+   {title: 'Item 1', subtitle: 'Subtitle'},
+   {title: 'Item 2', subtitle: 'Subtitle'},
+   {title: 'Item 3', subtitle: 'Subtitle'},
+   {title: 'Item 4', subtitle: 'Subtitle'}
+  ];
+  var mediaItems = [ 
+   {title: 'Item 1', subtitle: 'Subtitle', image: 'http://placehold.it/100'},
+   {title: 'Item 2', subtitle: 'Subtitle', image: 'http://placehold.it/100'},
+   {title: 'Item 3', subtitle: 'Subtitle', image: 'http://placehold.it/100'},
+   {title: 'Item 4', subtitle: 'Subtitle', image: 'http://placehold.it/100'}
+  ];
+  HTMLImports.whenReady(function(){
+    document.getElementById('list1').data = basicItems;
+    document.getElementById('list2').data = textItems;
+    document.getElementById('list3').data = mediaItems;
+  });
+  
+</script>
+<div class="page-header">
+  <h2>Lists</h2>
+</div>
+<div class="container demo">
+  <div class="col-12">
+    <h3>Basic list</h3>
+    <pxm-list id="list1"></pxm-list>
+    <ul class="table-view">
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+    </ul>
+    <h3>Title list</h3>
+    <pxm-list id="list2"></pxm-list>
+    <h3>Media list</h3>
+    <pxm-list id="list3"></pxm-list>
+  </div>
+</div>

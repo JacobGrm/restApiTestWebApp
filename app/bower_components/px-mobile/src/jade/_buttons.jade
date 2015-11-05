@@ -1,0 +1,69 @@
+mixin buttons(id, ...items)
+  each item in items
+    button(class=item)= item
+    
+    
+.page-header
+  h2 Buttons
+  p Buttons are available in four sizes and in a variety of priority indications. Depending on the use case a button with the right emphasis can be chosen.
+  
+#buttons.container.full-width.gutters-sm
+
+  .col-md-6.demo
+    .page-header
+      h3 Small Buttons
+    pxm-example
+      +buttons('small-buttons', 'primary small',  'secondary small', 'positive small', 'negative small', 'default small', 'disabled small')
+
+  .col-md-6.demo
+    .page-header
+      h3 Regular Buttons
+    pxm-example
+      +buttons('basic-buttons', 'primary',  'secondary', 'positive', 'negative', 'default', 'disabled')
+      
+  .col-md-6.demo
+    .page-header
+      h3 Large Buttons
+    pxm-example
+      +buttons('large-buttons', 'primary large',  'secondary large', 'positive large', 'negative large', 'default large', 'disabled large')
+
+  .col-md-6.demo
+    .page-header
+      h3 Outline Buttons
+    pxm-example
+      +buttons('outline-buttons', 'primary outline', 'secondary outline', 'positive outline', 'negative outline', 'default outline', 'disabled outline')
+  
+  .col-md-6.demo
+    .page-header
+      h3 Buttons with Icons
+    pxm-example
+      button.primary
+        i.fa.fa-lg.fa-search
+      button
+        i.fa.fa-lg.fa-user
+      button.secondary
+        i.fa.fa-lg.fa-edit
+      button.positive
+        i.fa.fa-lg.fa-check
+      button.negative
+        i.fa.fa-lg.fa-times
+  
+  .col-md-6
+    .page-header
+      h3 Button Groups
+    pxm-example
+      section.btn-group
+        +buttons('group-buttons', 'primary', 'secondary', 'positive', 'negative', 'default', 'disabled')
+  
+  .col-md-6
+    .page-header
+      h3 Block Buttons
+    pxm-example
+      +buttons('block-buttons', 'primary block', 'secondary block', 'positive block', 'negative block', 'default block', 'disabled block')
+  
+  .col-md-6
+    .page-header
+      h3 Block Outline Buttons
+    pxm-example
+      +buttons('outlined-block-buttons',  'primary block outline', 'secondary block outline', 'positive block outline', 'negative block outline', 'default block outline', 'disabled block outline')
+  
