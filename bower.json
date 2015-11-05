@@ -1,0 +1,39 @@
+{
+  "_id": "px-end2end-test-app-2",
+  "name": "px-end2end-test-app-2",
+  "version": "0.0.1",
+  "files": [
+    "./dist/**/*.*"
+  ],
+  "main":
+    "index.html",
+  "description": "A mobile application using px-mobile.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.build.ge.com/Org/repo.git"
+  },
+  "keywords": [
+    "px",
+    "px-mobile",
+    "web-component"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "~1.0.9",
+    "px-mobile": "https://github.build.ge.com/212474815/px-mobile.git#develop"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#~1.0.5"
+  },
+  "resolutions": {
+    "polymer": "^1.1.0",
+    "px-mobile": "develop"
+  }
+}
