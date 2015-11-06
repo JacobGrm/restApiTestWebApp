@@ -1,26 +1,33 @@
-//- index.jade
-extends ./views/layout
-block title
-  title px-mobile-seed-app demo
+doctype html
+html
+    head
+        title Jasmine Spec Runner
+        // jasmine source
+        link(rel='shortcut icon', type='image/png', href='spec/lib/jasmine-1.2.0/jasmine_favicon.png')
+        link(rel='stylesheet', type='text/css', href='spec/lib/jasmine-1.2.0/jasmine.css')
+        script(type='text/javascript', src='spec/lib/jasmine-1.2.0/jasmine.js')
+        script(type='text/javascript', src='spec/lib/jasmine-1.2.0/jasmine-html.js')
+        // include spec files here...
+        script(type='text/javascript', src='spec/helper.js')
+        script(type='text/javascript', src='scripts/runtests.js')
+        script(type='text/javascript').
+            function runJasmineTests() {
+                var button = document.getElementById('clickButt');
+                button.style.display = 'none';
+                var jasmineEnv = jasmine.getEnv();
+                jasmineEnv.updateInterval = 1000;
+                var htmlReporter = new jasmine.HtmlReporter();
+                jasmineEnv.addReporter(htmlReporter);
+                jasmineEnv.specFilter = function (spec) {
+                    return htmlReporter.specFilter(spec);
+                };
+                function execJasmine() {
+                    jasmineEnv.execute();
+                }
 
-block styles
-  // build:css styles/main.css
-  link(rel='stylesheet', href='styles/main.css')
-  // endbuild
-
-block scripts
-  //Dependencies
-  script(src='./bower_components/webcomponentsjs/webcomponents.js')
-  link(rel='import' href='./bower_components/polymer/polymer.html')
-  // endbuild
-
-  link(rel='import' href='./bower_components/px-mobile/px-mobile.html')
-  link(rel='import' href='./bower_components/px-mobile/px-mobile-theme.html')
-
-  // will be replaced with elements/elements.vulcanized.html
-  link(rel='import', href='./elements/elements.html')
-  // endreplace
-  script(src='scripts/app.js')
-
-block content
-  include ./views/app.jade
+                execJasmine();
+            }
+    body
+        button#clickButt(type='button', onclick='runJasmineTests()') Run Rest API Tests
+        #stage(style='display:none;')
+           
