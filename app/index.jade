@@ -7,10 +7,13 @@ html
         link(rel='stylesheet', type='text/css', href='spec/lib/jasmine-1.2.0/jasmine.css')
         script(type='text/javascript', src='spec/lib/jasmine-1.2.0/jasmine.js')
         script(type='text/javascript', src='spec/lib/jasmine-1.2.0/jasmine-html.js')
+
         // include spec files here...
         script(type='text/javascript', src='spec/helper.js')
-        script(type='text/javascript', src='scripts/runtests.js')
-        script(type='text/javascript').
+        script(type='text/javascript', src='scripts/createDocument.js')
+        script(type='text/javascript', src='scripts/userSettings.js')
+
+    script(type='text/javascript').
             function runJasmineTests() {
                 var button = document.getElementById('clickButt');
                 button.style.display = 'none';
